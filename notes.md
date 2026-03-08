@@ -1,4 +1,9 @@
 Outline
+-game
+ -initiation and termination
+ -save states?
+ -multiplayer via socket library?
+
 -classes
  -priest: healing, holy magic 
  -mage: high magic damage, elemental magic, squishy 
@@ -49,13 +54,3 @@ Outline
  -magic resistance
  -physical resistance
   -flat resistance model: 1 resistance = -1 damage
-
--attributes
- -strength: phys dmg, stamina
- -agility: initiative
- -intellect: mag dmg, mana
- -constitution: health, defenses
-
--saving game states?
-
--multiplayer via socket library?
