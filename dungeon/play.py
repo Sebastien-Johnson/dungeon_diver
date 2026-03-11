@@ -1,4 +1,6 @@
-from systems.units import Unit
+from systems.units import *
+from systems.classes import *
+from systems.player_races import *
 
 class Game():
     def __init__(self):
@@ -11,13 +13,10 @@ class Game():
 
     def create_adventurer(self):
         name = self.get_name
-        race = self.check_race()
-        player_class = self.check_class()
-
-        adventurer = Unit(name, race, player_class)
-        return adventurer
+        race = self.race_to_obj(self.check_race())
+        player_class = self.player_class_to_obj(self.check_class())
+        return Player(name, race, player_class)
     
-
     def get_name(self):
         print("What's your name adventurer?\n")
         name = input()
@@ -36,12 +35,23 @@ class Game():
             else:
                 print(f"Sorry, '{player_race}' is not a known race. Try again.\n")
                 player_race = input()
+
+    def race_to_obj(self, race):
+        match race:
+            case "human":
+                return Human()
+            case "elf":
+                return Elf()
+            case "dwarf":
+                return Dwarf()
+            case "goliath":
+                return Goliath()
     
     def check_class(self):
         valid_classes = ["warrior", "mage", "cleric", "ranger"]
         propper_class = False
         print("What class are you?\n")
-        player_class = input()
+        player_class = input().lower()
 
         while propper_class == False:
             if player_class.lower() in valid_classes:
@@ -49,7 +59,18 @@ class Game():
                 return player_class
             else:
                 print(f"Sorry, '{player_class}' is not a propper class. Try again.\n")
-                player_class = input()
+                player_class = input().lower()
+    
+    def player_class_to_obj(self, player_class):
+        match player_class:
+            case "warrior":
+                return Warrior()
+            case "ranger":
+                return Ranger()
+            case "mage":
+                return Mage()
+            case "cleric":
+                return Cleric()
 
     def start_dungeon(self):
         pass

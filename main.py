@@ -1,4 +1,4 @@
-from play import Game
+from dungeon.play import Game
 
 def main():
     new_game = Game()

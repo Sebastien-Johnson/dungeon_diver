@@ -11,17 +11,18 @@ class Race():
 class Human(Race):
     def __init__(self):
         super().__init__()
-        self.race_name = "Human"
+        self.race_name = "human"
 
     def trait(self):
         pass
 
     def stat_bonus(self):
         pass   
+
 class Dwarf(Race):
     def __init__(self):
         super().__init__()
-        self.race_name = "Dwarf"
+        self.race_name = "dwarf"
 
     def trait(self):
         pass
@@ -32,7 +33,7 @@ class Dwarf(Race):
 class Elf(Race):
     def __init__(self):
         super().__init__()
-        self.race_name = "Elf"
+        self.race_name = "elf"
 
     def trait(self):
         pass
@@ -44,7 +45,7 @@ class Elf(Race):
 class Goliath(Race):
     def __init__(self):
         super().__init__()
-        self.race_name = "Goliath"
+        self.race_name = "goliath"
 
     def trait(self):
         pass

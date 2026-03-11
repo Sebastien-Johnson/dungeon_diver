@@ -1,9 +1,41 @@
-Outline
--game
+Roadmap
+~~-separate unit classes from units~~
+  ~~-set unit base stat by class~~
+ ~~ -update game class~~
+-monsters
+  -races
+  -tiers
+  -monster generation
+  -lvl generation
+  -stat scaling
+-lvl system
+  -monster xp
+  -lvl bar
+  -scale
+  -stat scaling
+-dungeon lvl generation
+  -rest area every 10f
+  -use items instead of attacking
+  -use items after clearing a lvl
+  -loot system
+  -xp update system
+-basic abilities
+  -ability library
+-combat system
+  -dmg calc
+-elemental system
+  -enchantment effects
+  -dmg modifiers
+-item library
+
+
+Notes
  -initiation and termination
  -save states?
  -multiplayer via socket library?
 
+
+Outline
 -classes
  -priest: healing, holy magic 
  -mage: high magic damage, elemental magic, squishy 
