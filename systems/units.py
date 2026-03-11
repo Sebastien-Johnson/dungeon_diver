@@ -17,10 +17,10 @@ class Player(Unit):
         super().__init__(name, race, unit_class, lvl)
         self.current_xp = int()
         self.xp_to_lvl = int()
-        self.stats = unit_class.stats 
+        self.base_stats = unit_class.stats.add_stats(race.stat_bonuses) 
 
 class Monster(Unit):
     def __init__(self, name, race, unit_class, lvl):
         super().__init__(name, race, unit_class, lvl)
         self.xp_val = int()
-        self.stats = Stats()
+        self.base_stats = unit_class.stats.add_stats(race.base_stats)

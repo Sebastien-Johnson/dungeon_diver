@@ -3,11 +3,12 @@ Roadmap
   ~~-set unit base stat by class~~
  ~~ -update game class~~
 -monsters
-  -races
-  -tiers
+  ~~-races~~
+  ~~-tiers~~
   -monster generation
   -lvl generation
   -stat scaling
+~~-create "base stats" off class and race, scale leveling off base stats~~
 -lvl system
   -monster xp
   -lvl bar

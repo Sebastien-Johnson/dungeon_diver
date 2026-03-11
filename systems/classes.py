@@ -29,3 +29,21 @@ class Cleric(UnitClass):
         super().__init__()
         self.classname = "cleric"
         self.stats = Stats(2, 2, 2, 5, None, None, 30, 5)
+
+class Low(UnitClass):
+    def __init__(self):
+        super().__init__()
+        self.classname = "low"
+        self.stats = Stats(1, 1, 1, 1, 30, 1, 30, 1)
+
+class Greater(UnitClass):
+    def __init__(self):
+        super().__init__()
+        self.classname = "greater"
+        self.stats = Stats(2, 2, 2, 2, 40, 2, 40, 2)
+
+class High(UnitClass):
+    def __init__(self):
+        super().__init__()
+        self.classname = "high"
+        self.stats = Stats(3, 3, 3, 3, 50, 3, 50, 3)
