@@ -5,16 +5,18 @@ Roadmap
 -monsters
   ~~-races~~
   ~~-tiers~~
-  -monster generation
-  -lvl generation
-  -stat scaling
 ~~-create "base stats" off class and race, scale leveling off base stats~~
 -lvl system
-  -monster xp
+
+  -add xp
+    -lvl up
+    -xp overflow
   -lvl bar
   -scale
   -stat scaling
 -dungeon lvl generation
+  -monster generation
+  -lvl generation
   -rest area every 10f
   -use items instead of attacking
   -use items after clearing a lvl
