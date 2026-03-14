@@ -28,6 +28,7 @@ Roadmap
   -loot system
   -xp update system
 -basic abilities
+  -use_ability function
   -ability library
 -combat system
   -dmg calc
