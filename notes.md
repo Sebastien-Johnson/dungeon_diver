@@ -7,13 +7,18 @@ Roadmap
   ~~-tiers~~
 ~~-create "base stats" off class and race, scale leveling off base stats~~
 -lvl system
-
-  -add xp
-    -lvl up
-    -xp overflow
-  -lvl bar
-  -scale
-  -stat scaling
+  ~~-add xp~~
+    ~~-lvl up~~
+    ~~-xp overflow~~
+  ~~-lvl bar~~
+-Resource bars
+  ~~-HP~~
+  ~~-stam~~
+  ~~-mana~~
+  ~~-adding potions~~
+  ~~-resting~~
+  -dying
+  ~~-taking damage/using resource~~
 -dungeon lvl generation
   -monster generation
   -lvl generation
@@ -26,10 +31,13 @@ Roadmap
   -ability library
 -combat system
   -dmg calc
+-xp scaling
+-stat scaling
 -elemental system
   -enchantment effects
   -dmg modifiers
 -item library
+-update die function to allow restart before sys exit
 
 
 Notes

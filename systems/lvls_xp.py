@@ -23,7 +23,10 @@ class Leveling():
 
     def add_xp(self, new_xp):
         self.xp_bar.current_xp += new_xp
-        #check if reaches xp needed
+        if self.xp_bar.current_xp >= self.xp_bar.xp_to_lvl:
+            self.lvl_up
 
     def lvl_up(self):
-        pass
+        extra_xp = self.xp_bar.current_xp - self.xp_bar.xp_to_lvl
+        self.xp_bar = ExpBar(self.xp_bar.xp_to_lvl, 0)
+        self.add_xp(extra_xp)
