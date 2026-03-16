@@ -19,24 +19,29 @@ Roadmap
   ~~-resting~~
   -dying
   ~~-taking damage/using resource~~
+-Add "return specs" method for skills for players to see
+~-Monster skills~
 -dungeon lvl generation
   -monster generation
   -lvl generation
+  -skill selection
   -rest area every 10f
   -use items instead of attacking
   -use items after clearing a lvl
   -loot system
   -xp update system
--basic abilities
+~~-basic abilities~~
   -use_ability function
   -ability library
 -combat system
   -dmg calc
 -xp scaling
 -stat scaling
--elemental system
-  -enchantment effects
+-effects system
+  -elemental/enchantment effects
+  -poison/bleed
   -dmg modifiers
+  -buffs/debuffs
 -item library
 -update die function to allow restart before sys exit
 
@@ -45,6 +50,7 @@ Notes
  -initiation and termination
  -save states?
  -multiplayer via socket library?
+ -garbage cleaner
 
 
 Outline
@@ -74,7 +80,7 @@ Outline
   -equip after rounds
   -use after rounds for free
 
--montsters
+-monsters
  -monster generation based on party size, strength based on dungeon level
  -monster species: slime, bat, goblin, troll, 
  -intra species tiers: lesser, normal, greater, high 

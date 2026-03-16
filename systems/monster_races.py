@@ -1,5 +1,5 @@
 from player_races import Race
-from units import Monster
+from skills.monster_skills import *
 from stats import Stats
 
 
@@ -16,6 +16,7 @@ class Slime(MonsterRace):
         super().__init__()
         self.race_name = "slime"
         self.base_stats = Stats()
+        self.skills = SlimeSkills()
 
     def trait(self):
         pass
@@ -25,6 +26,7 @@ class Bat(MonsterRace):
         super().__init__()
         self.race_name = "bat"
         self.base_stats = Stats()
+        self.skills = BatSkills()
 
     def trait(self):
         pass
@@ -34,6 +36,7 @@ class Goblin(MonsterRace):
         super().__init__()
         self.race_name = "goblin"
         self.base_stats = Stats()
+        self.skills = GoblinSkills()
 
     def trait(self):
         pass
@@ -43,6 +46,7 @@ class Kobold(MonsterRace):
         super().__init__()
         self.race_name = "kobold"
         self.base_stats = Stats()
+        self.skills = KoboldSkills()
 
     def trait(self):
         pass
@@ -52,6 +56,7 @@ class DireWolf(MonsterRace):
         super().__init__()
         self.race_name = "dire wolf"
         self.base_stats = Stats()
+        self.skills = DirewolfSkills()
 
     def trait(self):
         pass
@@ -61,6 +66,7 @@ class Troll(MonsterRace):
         super().__init__()
         self.race_name = "troll"
         self.base_stats = Stats()
+        self.skills = TrollSkills()
 
     def trait(self):
         pass
@@ -70,6 +76,7 @@ class Giant(MonsterRace):
         super().__init__()
         self.race_name = "giant"
         self.base_stats = Stats()
+        self.skills = GiantSkills()
 
     def trait(self):
         pass
@@ -79,6 +86,7 @@ class Dragon(MonsterRace):
         super().__init__()
         self.race_name = "dragon"
         self.base_stats = Stats()
+        self.skills = DragonSkills()
 
     def trait(self):
         pass
