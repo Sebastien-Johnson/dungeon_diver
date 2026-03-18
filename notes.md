@@ -19,6 +19,8 @@ Roadmap
   ~~-resting~~
   -dying
   ~~-taking damage/using resource~~
+  
+-Get xp from monster to player xp bar on death
 -Add "return specs" method for skills for players to see
 ~-Monster skills~
 -dungeon lvl generation

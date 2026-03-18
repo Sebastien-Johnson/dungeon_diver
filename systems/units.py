@@ -1,4 +1,5 @@
 from loot.equipment import Inventory
+from lvls_xp import Leveling
 import sys
 
 class Unit():
@@ -6,7 +7,8 @@ class Unit():
         self.name = name
         self.race = race
         self.unit_class = unit_class
-        self.lvl = lvl
+        self.leveling = Leveling()
+        self.current_lvl = self.leveling.current_lvl
         self.inventory = Inventory()
     
     def use_stam(self, cost):
@@ -75,15 +77,15 @@ class Monster(Unit):
         self.base_stats = unit_class.stats.add_stats(race.base_stats)
         self.skils = unit_class.skills 
 
-    def take_phys_damage(self, damage):
+    def take_phys_damage(self, damage, caster):
         effective_dmg = damage - self.base_stats.phys_armor
         self.base_stats.current_health -= effective_dmg
         if self.base_stats.current_health <= 0:
-            return self.xp_val
+            caster.leveling.xp_bar += self.xp_val
 
-    def take_mag_damage(self, damage):
+    def take_mag_damage(self, damage, caster):
         effective_dmg = damage - self.base_stats.mag_armor
         self.base_stats.current_health -= effective_dmg
         if self.base_stats.current_health <= 0:
-            return self.xp_val
+            caster.leveling.xp_bar += self.xp_val
 

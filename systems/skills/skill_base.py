@@ -40,7 +40,7 @@ class PhysSkills(Skills):
     def phys_attack(self, caster, target, cost, base_pow, accuracy):
         if self.check_stamina(caster, cost):
             if self.check_accuracy(accuracy):
-                target.take_phys_damage(self.calc_phys_power(caster, base_pow))
+                target.take_phys_damage(self.calc_phys_power(caster, base_pow), caster)
                 return True
     
     def phys_heal(self, cost, caster, target, base_pow, accuracy):
