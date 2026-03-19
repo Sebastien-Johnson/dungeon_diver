@@ -20,9 +20,9 @@ Roadmap
   -dying
   ~~-taking damage/using resource~~
   
--Get xp from monster to player xp bar on death
--Add "return specs" method for skills for players to see
-~-Monster skills~
+~~-Get xp from monster to player xp bar on death~~
+
+~~-Monster skills~~
 -dungeon lvl generation
   -monster generation
   -lvl generation
@@ -36,7 +36,14 @@ Roadmap
   -use_ability function
   -ability library
 -combat system
+  -skill choice method
+    -add if monster
+    -add if attacking first or second
+    -add exit condition/while loop in dungeon level instance
+    -create list skills in skill classes to reference and iterate over
+    -create lvl locks on skills (initial if statement in each method that checks caster lvl)
   -dmg calc
+  -Add "return specs" method for skills for players to see
 -xp scaling
 -stat scaling
 -effects system
@@ -49,6 +56,8 @@ Roadmap
 
 
 Notes
+ -'score' by XP obtained or dungeon lvl reached
+  -Bonus for no damage instances
  -initiation and termination
  -save states?
  -multiplayer via socket library?
