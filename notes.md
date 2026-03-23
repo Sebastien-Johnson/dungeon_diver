@@ -36,6 +36,7 @@ Roadmap
   -use_ability function
   -ability library
 -combat system
+  -list target health and caster resources after each attack
   -skill choice method
     -add if monster
     -add if attacking first or second
