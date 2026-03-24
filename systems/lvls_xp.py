@@ -6,7 +6,7 @@ class ExpBar():
         
 class Leveling():
     def __init__(self):
-        self.xp_bar = ExpBar()
+        self.xp_bar = ExpBar(100)
         self.current_lvl = 1
 
     def add_xp(self, new_xp):

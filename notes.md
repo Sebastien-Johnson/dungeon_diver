@@ -26,6 +26,7 @@ Roadmap
 -dungeon lvl generation
   -monster generation
   -lvl generation
+  -Announce monster turn and add wait before their attack
   -skill selection
   -rest area every 10f
   -use items instead of attacking
@@ -45,6 +46,7 @@ Roadmap
     -create lvl locks on skills (initial if statement in each method that checks caster lvl)
   -dmg calc
   -Add "return specs" method for skills for players to see
+-update class bonuses to be multipliers instead of flat numbers
 -xp scaling
 -stat scaling
 -effects system

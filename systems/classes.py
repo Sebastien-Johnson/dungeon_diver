@@ -11,28 +11,28 @@ class Warrior(UnitClass):
     def __init__(self):
         super().__init__()
         self.classname = "warrior"
-        self.stats = Stats(4, 4, 2, 3, None, None, 30, 3)
+        self.stats = Stats(4, 4, 2, 3, 0, 0, 30, 3)
         self.skills = WarriorSkills().skill_list
 
 class Ranger(UnitClass):
     def __init__(self):
         super().__init__()
         self.classname = "ranger"
-        self.stats = Stats(2, 2, 2, 5, None, None, 30, 5)
+        self.stats = Stats(2, 2, 2, 5, 0, 0, 30, 5)
         self.skills = RangerSkills().skill_list
 
 class Mage(UnitClass):
     def __init__(self):
         super().__init__()
         self.classname = "mage"
-        self.stats = Stats(2, 2, 2, 1, 30, 9, None, None)
+        self.stats = Stats(2, 2, 2, 1, 30, 9, 0, 0)
         self.skills = MageSkills().skill_list
 
 class Cleric(UnitClass):
     def __init__(self):
         super().__init__()
         self.classname = "cleric"
-        self.stats = Stats(2, 2, 2, 5, None, None, 30, 5)
+        self.stats = Stats(2, 2, 2, 5, 0, 0, 30, 5)
         self.skills = ClericSkills().skill_list
 
 class Low(UnitClass):

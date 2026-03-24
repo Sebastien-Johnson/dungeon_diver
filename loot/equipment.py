@@ -3,11 +3,11 @@ from .items import *
 class Inventory():
     def __init__(self):
         self.bag = []
-        self.head = HeadPiece()
-        self.chest = ChestPiece()
-        self.legs = LegPiece()
-        self.arms = ArmPiece()
-        self.weapons = []
+        self.head = HeadPiece
+        self.chest = ChestPiece
+        self.legs = LegPiece
+        self.arms = ArmPiece
+        self.weapons = [Weapon]
         self.equipped = [self.head, self.chest, self.legs, self.arms, self.weapons]
 
     def add_to_bag(self, item):

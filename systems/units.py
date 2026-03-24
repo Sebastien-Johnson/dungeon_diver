@@ -56,7 +56,7 @@ class Player(Unit):
         self.current_xp = int()
         self.xp_to_lvl = int()
         self.base_stats = unit_class.stats.add_stats(race.stat_bonuses) 
-        self.skills = unit_class.skill_list
+        self.skills = unit_class.skills
 
     def take_phys_damage(self, damage):
         effective_dmg = damage - self.base_stats.phys_armor
@@ -75,7 +75,7 @@ class Monster(Unit):
         super().__init__(name, race, unit_class, lvl)
         self.xp_val = int()
         self.base_stats = unit_class.stats.add_stats(race.base_stats)
-        self.skills = unit_class.skill_list
+        self.skills = unit_class.skills
 
     def take_phys_damage(self, damage, caster):
         effective_dmg = damage - self.base_stats.phys_armor
