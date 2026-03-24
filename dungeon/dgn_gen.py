@@ -1,5 +1,5 @@
 import random
-from combat import Combat
+from .combat import Combat
 from systems.monster_races import *
 
 class Dungeon():

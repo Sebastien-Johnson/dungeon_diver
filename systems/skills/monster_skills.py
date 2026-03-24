@@ -1,4 +1,4 @@
-from skill_base import PhysSkills, MagSkills
+from .skill_base import PhysSkills, MagSkills
 
 class SlimeSkills(PhysSkills, MagSkills):
     def __init__(self):

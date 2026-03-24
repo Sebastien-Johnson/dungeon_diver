@@ -1,5 +1,5 @@
 from loot.equipment import Inventory
-from lvls_xp import Leveling
+from .lvls_xp import Leveling
 import sys
 
 class Unit():

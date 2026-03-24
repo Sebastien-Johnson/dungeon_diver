@@ -1,4 +1,4 @@
-from skill_base import PhysSkills, MagSkills
+from .skill_base import PhysSkills, MagSkills
 
 class WarriorSkills(PhysSkills):
     def __init__(self):

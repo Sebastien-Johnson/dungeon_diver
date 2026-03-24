@@ -48,7 +48,6 @@ Roadmap
 -xp scaling
 -stat scaling
 -effects system
-  -elemental/enchantment effects
   -poison/bleed
   -dmg modifiers
   -buffs/debuffs

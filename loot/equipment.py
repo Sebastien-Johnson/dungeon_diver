@@ -1,26 +1,26 @@
-from items import Item, Weapon, Armor
+from .items import *
 
 class Inventory():
     def __init__(self):
         self.bag = []
-        self.head = Item
-        self.chest = Item
-        self.legs = Item
-        self.arms = Item
+        self.head = HeadPiece()
+        self.chest = ChestPiece()
+        self.legs = LegPiece()
+        self.arms = ArmPiece()
         self.weapons = []
         self.equipped = [self.head, self.chest, self.legs, self.arms, self.weapons]
 
-    def add_to_bag(self, item=Item):
+    def add_to_bag(self, item):
         self.bag.append(item)
 
-    def throw_item(self, item=Item):
+    def throw_item(self, item):
         self.bag.remove(item)
 
-    def give_item(self, player, item=Item):
+    def give_item(self, player, item):
         player.inventory.add_to_bag(item)
         self.throw_item(item)
 
-    def equip_armor(self, body_part, current_armor=Armor, new_armor=Armor):
+    def equip_armor(self, body_part, current_armor, new_armor):
         if current_armor.item_type == new_armor.item_type:
             self.inventory.add_to_bag(current_armor)
             body_part = new_armor

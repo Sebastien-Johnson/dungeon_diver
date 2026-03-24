@@ -1,6 +1,3 @@
-import sys
-from units import Player, Monster
-
 class Stats():
     def __init__(self, max_health=0, phys_armor=0, mag_armor=0, agility=0, max_mana=None, mag_pow=None, max_stamina=None, phys_pow=None):
         self.max_health = max_health

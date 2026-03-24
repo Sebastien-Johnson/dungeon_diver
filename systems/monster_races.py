@@ -1,6 +1,6 @@
-from player_races import Race
-from skills.monster_skills import *
-from stats import Stats
+from .player_races import Race
+from .skills.monster_skills import *
+from .stats import Stats
 
 
 class MonsterRace(Race):

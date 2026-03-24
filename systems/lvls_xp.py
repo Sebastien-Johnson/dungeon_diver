@@ -1,16 +1,3 @@
-#lvl and xp system
-"""
--current xp
--xp needed to lvl up
--adding new xp
-    -lvl up
-    -xp overflow
-    -new xp_to_lvl calc
-    -incrementing player level and stats
-    -unlocking abilities
--separate lvling class? create new xp bar obj on lvl?
-"""
-
 class ExpBar():
     def __init__(self, xp_to_lvl):
         self.xp_to_lvl = xp_to_lvl

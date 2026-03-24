@@ -1,5 +1,5 @@
-from stats import Stats
-from systems.skills.class_skills import *
+from .stats import Stats
+from .skills.class_skills import *
 
 class UnitClass():
     def __init__(self):
