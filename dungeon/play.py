@@ -20,8 +20,8 @@ class Game():
     
     def get_name(self):
         print("What's your name adventurer?\n")
-        print("\n")
         name = input()
+        print("\n")
         return name
 
     def check_race(self):
@@ -55,7 +55,7 @@ class Game():
         valid_classes = ["warrior", "mage", "cleric", "ranger"]
         propper_class = False
         print("What class are you?")
-        print("Warrior, Mage, Cleric, Ranger\n")
+        print(["Warrior, Mage, Cleric, Ranger\n"])
         player_class = input().lower()
         print("\n")
 

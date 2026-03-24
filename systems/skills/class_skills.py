@@ -4,10 +4,10 @@ class WarriorSkills(PhysSkills):
     def __init__(self):
         super().__init__()
 
-        self.skill_list = [self.slash]
+        self.skill_list = ["slash"]
 
     def slash(self, caster, target, cost=5, base_pow=1, accuracy=100):
-        print(f"{caster.name} slashes {target.name} with their weapon!")
+        print(f"{caster.name} slashes the {target.name} with their weapon!")
         self.phys_attack(caster, target, cost, base_pow, accuracy)
 
 class RangerSkills(PhysSkills):
@@ -17,7 +17,7 @@ class RangerSkills(PhysSkills):
         self.skill_list = [self.arrow_shot]
 
     def arrow_shot(self, caster, target, cost=2, base_pow=2, accuracy=100):
-        print(f"{caster.name} fires an arrow {target.name}!")
+        print(f"{caster.name} fires an arrow at the {target.name}!")
 
 
 class MageSkills(MagSkills):
@@ -27,7 +27,7 @@ class MageSkills(MagSkills):
         self.skill_list = [self.mag_missile]
 
     def mag_missile(self, caster, target, cost=8, base_pow=4, accuracy=100):
-        print(f"{caster.name} cast a barrage of magical projectiles at {target.name}!")
+        print(f"{caster.name} cast a barrage of magical projectiles at the {target.name}!")
         self.mag_attack(caster, target, cost, base_pow, accuracy)
 
 
@@ -42,5 +42,5 @@ class ClericSkills(MagSkills):
         self.mag_attack(caster, target, cost, base_pow, accuracy)
 
     def smite(self, caster, target, cost=8, base_pow=4, accuracy=100):
-        print(f"{caster.name} imbues their weapon with holy light and strikes at {target.name}!")
+        print(f"{caster.name} imbues their weapon with holy light and strikes at the {target.name}!")
         self.mag_attack(caster, target, cost, base_pow, accuracy)

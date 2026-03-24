@@ -3,7 +3,7 @@ from .lvls_xp import Leveling
 import sys
 
 class Unit():
-    def __init__(self, unit_class, name, race, lvl=1):
+    def __init__(self,  name, race, unit_class, lvl=1):
         self.name = name
         self.race = race
         self.unit_class = unit_class
@@ -53,12 +53,14 @@ class Unit():
 class Player(Unit):
     def __init__(self, name, race, unit_class, lvl=1):
         super().__init__(name, race, unit_class, lvl)
+        self.name = name
         self.current_xp = int()
         self.xp_to_lvl = int()
-        self.base_stats = unit_class.stats.add_stats(race.stat_bonuses) 
+        self.base_stats = unit_class.stats
+        self.base_stats.add_stats(race.stat_bonuses)
         self.skills = unit_class.skills
 
-    def take_phys_damage(self, damage):
+    def take_phys_damage(self, damage): 
         effective_dmg = damage - self.base_stats.phys_armor
         self.base_stats.current_health -= effective_dmg
         if self.base_stats.current_health <= 0:
@@ -71,10 +73,12 @@ class Player(Unit):
             sys.exit("You died...")
 
 class Monster(Unit):
-    def __init__(self, name, race, unit_class, lvl):
-        super().__init__(name, race, unit_class, lvl)
+    def __init__(self, race, unit_class, lvl):
+        super().__init__(race, unit_class, lvl)
+        self.name = race.name
         self.xp_val = int()
-        self.base_stats = unit_class.stats.add_stats(race.base_stats)
+        self.base_stats = race.stats
+        self.base_stats.add_stats(unit_class.base_stats)
         self.skills = unit_class.skills
 
     def take_phys_damage(self, damage, caster):

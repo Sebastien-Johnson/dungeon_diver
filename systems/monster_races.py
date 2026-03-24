@@ -14,8 +14,8 @@ class MonsterRace(Race):
 class Slime(MonsterRace):
     def __init__(self):
         super().__init__()
-        self.race_name = "slime"
-        self.base_stats = Stats()
+        self.name = "slime"
+        self.base_stats = Stats(1)
         self.skills = SlimeSkills()
 
     def trait(self):
@@ -24,8 +24,8 @@ class Slime(MonsterRace):
 class Bat(MonsterRace):
     def __init__(self):
         super().__init__()
-        self.race_name = "bat"
-        self.base_stats = Stats()
+        self.name = "bat"
+        self.base_stats = Stats(1)
         self.skills = BatSkills()
 
     def trait(self):
@@ -34,8 +34,8 @@ class Bat(MonsterRace):
 class Goblin(MonsterRace):
     def __init__(self):
         super().__init__()
-        self.race_name = "goblin"
-        self.base_stats = Stats()
+        self.name = "goblin"
+        self.base_stats = Stats(1)
         self.skills = GoblinSkills()
 
     def trait(self):
@@ -44,8 +44,8 @@ class Goblin(MonsterRace):
 class Kobold(MonsterRace):
     def __init__(self):
         super().__init__()
-        self.race_name = "kobold"
-        self.base_stats = Stats()
+        self.name = "kobold"
+        self.base_stats = Stats(1)
         self.skills = KoboldSkills()
 
     def trait(self):
@@ -54,8 +54,8 @@ class Kobold(MonsterRace):
 class DireWolf(MonsterRace):
     def __init__(self):
         super().__init__()
-        self.race_name = "dire wolf"
-        self.base_stats = Stats()
+        self.name = "dire wolf"
+        self.base_stats = Stats(1)
         self.skills = DirewolfSkills()
 
     def trait(self):
@@ -64,8 +64,8 @@ class DireWolf(MonsterRace):
 class Troll(MonsterRace):
     def __init__(self):
         super().__init__()
-        self.race_name = "troll"
-        self.base_stats = Stats()
+        self.name = "troll"
+        self.base_stats = Stats(1)
         self.skills = TrollSkills()
 
     def trait(self):
@@ -74,8 +74,8 @@ class Troll(MonsterRace):
 class Giant(MonsterRace):
     def __init__(self):
         super().__init__()
-        self.race_name = "giant"
-        self.base_stats = Stats()
+        self.name = "giant"
+        self.base_stats = Stats(1)
         self.skills = GiantSkills()
 
     def trait(self):
@@ -84,8 +84,8 @@ class Giant(MonsterRace):
 class Dragon(MonsterRace):
     def __init__(self):
         super().__init__()
-        self.race_name = "dragon"
-        self.base_stats = Stats()
+        self.name = "dragon"
+        self.base_stats = Stats(1)
         self.skills = DragonSkills()
 
     def trait(self):

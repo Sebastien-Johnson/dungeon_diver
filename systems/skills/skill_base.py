@@ -32,6 +32,7 @@ class Skills():
     
     def calc_mag_power(self, caster, base_pow):
         return base_pow + caster.base_stats.mag_pow
+    
            
 class PhysSkills(Skills):
     def __init__(self):
@@ -40,15 +41,18 @@ class PhysSkills(Skills):
     def phys_attack(self, caster, target, cost, base_pow, accuracy):
         if self.check_stamina(caster, cost):
             if self.check_accuracy(accuracy):
+                hp1 = target.base_stats.current_health
                 target.take_phys_damage(self.calc_phys_power(caster, base_pow), caster)
+                hp2 = target.base_stats.current_health - hp1
+                print(f"{caster.name} did {hp2} physical damage tp {target.name}!")
                 return True
     
     def phys_heal(self, cost, caster, target, base_pow, accuracy):
         if self.check_stamina(caster, cost):
             if self.check_accuracy(accuracy):
-                hp1 = target.current_health
+                hp1 = target.base_stats.current_health
                 target.restore_health(self.calc_phys_power(caster, base_pow))
-                hp2 = target.current_health - hp1
+                hp2 = target.base_stats.current_health - hp1
                 print(f"{target.name} restored {hp2} health points!")
                 return True   
 
@@ -59,15 +63,18 @@ class MagSkills(Skills):
     def mag_attack(self, cost, caster, target, base_pow, accuracy):
         if self.check_mana(caster, cost):
             if self.check_accuracy(accuracy):
+                hp1 = target.base_stats.current_health
                 target.take_mag_damage(self.calc_mag_power(caster, base_pow))
+                hp2 = target.base_stats.current_health - hp1
+                print(f"{caster.name} did {hp2} magic damage tp {target.name}!")
                 return True
     
     def mag_heal(self, cost, caster, target, base_pow, accuracy):
         if self.check_mana(caster, cost):
             if self.check_accuracy(accuracy):
-                hp1 = target.current_health
+                hp1 = target.base_stats.current_health
                 target.restore_health(self.calc_mag_power)
-                hp2 = target.current_health - hp1
+                hp2 = target.base_stats.current_health - hp1
                 print(f"{target.name} restored {hp2} health points!") 
                 return True
 

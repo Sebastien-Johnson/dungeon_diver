@@ -10,7 +10,7 @@ class Stats():
         self.mag_pow = mag_pow
         self.max_stamina = max_stamina
         self.current_stamina = max_stamina
-        self.phys_pow = phys_pow
+        self.phys_pow = phys_pow 
 
     def add_stats(self, new_stats):
         self.max_health += new_stats.max_health

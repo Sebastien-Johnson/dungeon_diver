@@ -25,6 +25,7 @@ Roadmap
 ~~-Monster skills~~
 -dungeon lvl generation
   -monster generation
+  -fix monster unit, class and race synergy
   -lvl generation
   -Announce monster turn and add wait before their attack
   -skill selection
