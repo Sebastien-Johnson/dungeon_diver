@@ -29,7 +29,7 @@ class Game():
         known_race = False
         print("What race are you?\n")
         print("[Human, Dwarf, Elf, Goliath]\n")
-        player_race = input()
+        player_race = input().lower()
         print("\n")
 
         while known_race == False:
@@ -43,7 +43,7 @@ class Game():
     def race_to_obj(self, race):
         match race:
             case "human":
-                return Human()
+                return Human() 
             case "elf":
                 return Elf()
             case "dwarf":

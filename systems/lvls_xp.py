@@ -19,6 +19,8 @@ class Leveling():
         self.xp_bar = ExpBar(self.xp_to_next(self.current_lvl))
         self.current_lvl += 1
         self.add_xp(extra_xp)
+        print("Level up!!")
+        print(f"Level: {self.current_lvl-1} -> {self.current_lvl}\n")
         
 
     def xp_to_next(self, current_lvl):

@@ -43,8 +43,8 @@ class PhysSkills(Skills):
             if self.check_accuracy(accuracy):
                 hp1 = target.base_stats.current_health
                 target.take_phys_damage(self.calc_phys_power(caster, base_pow), caster)
-                hp2 = target.base_stats.current_health - hp1
-                print(f"{caster.name} did {hp2} physical damage tp {target.name}!")
+                hp2 = hp1 - target.base_stats.current_health
+                print(f"{caster.name} did {hp2} physical damage to {target.name}!\n")
                 return True
     
     def phys_heal(self, cost, caster, target, base_pow, accuracy):
@@ -52,7 +52,7 @@ class PhysSkills(Skills):
             if self.check_accuracy(accuracy):
                 hp1 = target.base_stats.current_health
                 target.restore_health(self.calc_phys_power(caster, base_pow))
-                hp2 = target.base_stats.current_health - hp1
+                hp2 = hp1 - target.base_stats.current_health 
                 print(f"{target.name} restored {hp2} health points!")
                 return True   
 
@@ -65,7 +65,7 @@ class MagSkills(Skills):
             if self.check_accuracy(accuracy):
                 hp1 = target.base_stats.current_health
                 target.take_mag_damage(self.calc_mag_power(caster, base_pow))
-                hp2 = target.base_stats.current_health - hp1
+                hp2 = hp1 - target.base_stats.current_health
                 print(f"{caster.name} did {hp2} magic damage tp {target.name}!")
                 return True
     
@@ -74,7 +74,7 @@ class MagSkills(Skills):
             if self.check_accuracy(accuracy):
                 hp1 = target.base_stats.current_health
                 target.restore_health(self.calc_mag_power)
-                hp2 = target.base_stats.current_health - hp1
+                hp2 = hp1 - target.base_stats.current_health
                 print(f"{target.name} restored {hp2} health points!") 
                 return True
 

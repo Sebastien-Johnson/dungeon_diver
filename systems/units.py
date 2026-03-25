@@ -73,23 +73,27 @@ class Player(Unit):
             sys.exit("You died...")
 
 class Monster(Unit):
-    def __init__(self, race, unit_class, lvl):
+    def __init__(self, race, unit_class=None, lvl=1):
         super().__init__(race, unit_class, lvl)
         self.name = race.name
         self.xp_val = int()
-        self.base_stats = race.stats
-        self.base_stats.add_stats(unit_class.base_stats)
-        self.skills = unit_class.skills
+        self.base_stats = race.base_stats
+        self.skills = race.skills
+        self.unit_class = unit_class
+        if self.unit_class:
+            self.base_stats.add_stats(unit_class.base_stats)
 
     def take_phys_damage(self, damage, caster):
         effective_dmg = damage - self.base_stats.phys_armor
         self.base_stats.current_health -= effective_dmg
         if self.base_stats.current_health <= 0:
-            caster.leveling.xp_bar += self.xp_val
+            caster.leveling.xp_bar.current_xp += self.xp_val
+            print(f"{caster.name} gained {self.xp_val} experience points!\n")
 
     def take_mag_damage(self, damage, caster):
         effective_dmg = damage - self.base_stats.mag_armor
         self.base_stats.current_health -= effective_dmg
         if self.base_stats.current_health <= 0:
-            caster.leveling.xp_bar += self.xp_val
+            caster.leveling.xp_bar.current_xp += self.xp_val
+            print(f"{caster.name} gained {self.xp_val} experience points!\n")
 
