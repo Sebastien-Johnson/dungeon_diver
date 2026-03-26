@@ -45,5 +45,6 @@ class Dungeon():
         while player.base_stats.current_health > 0 and monster.base_stats.current_health > 0:
             dng_lvl_combat.combat_instance(player, monster)
         print(f"Level {self.dng_lvl_count} complete!\n")
+        print("==============================================")
 
     

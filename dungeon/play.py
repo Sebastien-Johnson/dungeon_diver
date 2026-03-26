@@ -10,6 +10,8 @@ class Game():
     def game_start(self):
         print("Welcome,.. to the dungeon.\n")
         player1 = self.create_adventurer()
+        print(f"Hello {player1.name} the {player1.race.race_name} {player1.unit_class.classname}!")
+        print("==============================================")
         self.start_dungeon(player1)
 
     def create_adventurer(self):
@@ -57,7 +59,7 @@ class Game():
         print("What class are you?")
         print(["Warrior, Mage, Cleric, Ranger\n"])
         player_class = input().lower()
-        print("\n")
+        print("==============================================")
 
         while propper_class == False:
             if player_class.lower() in valid_classes:

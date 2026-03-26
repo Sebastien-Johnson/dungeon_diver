@@ -83,17 +83,13 @@ class Monster(Unit):
         if self.unit_class:
             self.base_stats.add_stats(unit_class.base_stats)
 
-    def take_phys_damage(self, damage, caster):
+    def take_phys_damage(self, damage):
         effective_dmg = damage - self.base_stats.phys_armor
         self.base_stats.current_health -= effective_dmg
-        if self.base_stats.current_health <= 0:
-            caster.leveling.xp_bar.current_xp += self.xp_val
-            print(f"{caster.name} gained {self.xp_val} experience points!\n")
+        
 
-    def take_mag_damage(self, damage, caster):
+    def take_mag_damage(self, damage):
         effective_dmg = damage - self.base_stats.mag_armor
         self.base_stats.current_health -= effective_dmg
-        if self.base_stats.current_health <= 0:
-            caster.leveling.xp_bar.current_xp += self.xp_val
-            print(f"{caster.name} gained {self.xp_val} experience points!\n")
+        
 

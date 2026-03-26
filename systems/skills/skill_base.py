@@ -33,6 +33,12 @@ class Skills():
     def calc_mag_power(self, caster, base_pow):
         return base_pow + caster.base_stats.mag_pow
     
+    def return_xp(self, caster, target):
+        if target.base_stats.current_health <= 0:
+            print(f"{target.name} has been slain!")
+            caster.leveling.xp_bar.current_xp += target.xp_val
+            print(f"{caster.name} gained {target.xp_val} experience points!\n")
+    
            
 class PhysSkills(Skills):
     def __init__(self):
@@ -42,9 +48,10 @@ class PhysSkills(Skills):
         if self.check_stamina(caster, cost):
             if self.check_accuracy(accuracy):
                 hp1 = target.base_stats.current_health
-                target.take_phys_damage(self.calc_phys_power(caster, base_pow), caster)
+                target.take_phys_damage(self.calc_phys_power(caster, base_pow))
                 hp2 = hp1 - target.base_stats.current_health
-                print(f"{caster.name} did {hp2} physical damage to {target.name}!\n")
+                print(f"{caster.name} did {hp2} physical damage to the {target.name}!\n")
+                self.return_xp(caster, target)
                 return True
     
     def phys_heal(self, cost, caster, target, base_pow, accuracy):
@@ -66,7 +73,8 @@ class MagSkills(Skills):
                 hp1 = target.base_stats.current_health
                 target.take_mag_damage(self.calc_mag_power(caster, base_pow))
                 hp2 = hp1 - target.base_stats.current_health
-                print(f"{caster.name} did {hp2} magic damage tp {target.name}!")
+                print(f"{caster.name} did {hp2} magic damage to the {target.name}!")
+                self.return_xp(caster, target)
                 return True
     
     def mag_heal(self, cost, caster, target, base_pow, accuracy):
