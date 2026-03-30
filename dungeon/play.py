@@ -2,34 +2,42 @@ from systems.units import *
 from systems.classes import *
 from systems.player_races import *
 from .dgn_gen import *
+import time
 
 class Game():
     def __init__(self):
         pass
 
     def game_start(self):
+        time.sleep(1)
         print("Welcome,.. to the dungeon.\n")
+        time.sleep(1)
         player1 = self.create_adventurer()
-        print(f"Hello {player1.name} the {player1.race.race_name} {player1.unit_class.classname}!")
         print("==============================================")
+        print(f"Hello {player1.name} the {player1.race.race_name} {player1.unit_class.classname}!")
+        print("==============================================\n")
+        time.sleep(1)
         self.start_dungeon(player1)
 
     def create_adventurer(self):
         name = self.get_name()
+        time.sleep(1)
         race = self.race_to_obj(self.check_race())
+        time.sleep(1)
         player_class = self.player_class_to_obj(self.check_class())
+        time.sleep(1)
         return Player(name, race, player_class)
     
     def get_name(self):
         print("What's your name adventurer?\n")
-        name = input()
+        name = input().capitalize()
         print("\n")
         return name
 
     def check_race(self):
         valid_races = ["human", "dwarf", "elf", "goliath"]
         known_race = False
-        print("What race are you?\n")
+        print("What race are you?")
         print("[Human, Dwarf, Elf, Goliath]\n")
         player_race = input().lower()
         print("\n")
@@ -57,9 +65,9 @@ class Game():
         valid_classes = ["warrior", "mage", "cleric", "ranger"]
         propper_class = False
         print("What class are you?")
-        print(["Warrior, Mage, Cleric, Ranger\n"])
+        print("[Warrior, Mage, Cleric, Ranger]\n")
         player_class = input().lower()
-        print("==============================================")
+        
 
         while propper_class == False:
             if player_class.lower() in valid_classes:
@@ -82,4 +90,4 @@ class Game():
 
     def start_dungeon(self, player):
         new_dungeon = Dungeon(player)
-        new_dungeon.generate_dng_lvl()
+        new_dungeon.generate_dungeon()

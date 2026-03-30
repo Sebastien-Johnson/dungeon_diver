@@ -25,12 +25,13 @@ Roadmap
 ~~-Monster skills~~
 -dungeon lvl generation
   -monster generation
-  -fix monster unit, class and race synergy
-  -lvl generation
-  -Announce monster turn and add wait before their attack
-  -skill selection
+    ~~-Unique types arent creating new instances~~
+  ~~-fix monster unit, class and race synergy~~
+  ~~-lvl generation~~
+  ~~-Announce monster turn and add wait before their attack~~
+  ~~-skill selection~~
   -rest area every 10f
-  -use items instead of attacking
+  -use items between combats attacking
   -use items after clearing a lvl
   -loot system
   -xp update system
@@ -40,20 +41,16 @@ Roadmap
 -combat system
   -list target health and caster resources after each attack
   -skill choice method
-    -add if monster
-    -add if attacking first or second
-    -add exit condition/while loop in dungeon level instance
-    -create list skills in skill classes to reference and iterate over
-    -create lvl locks on skills (initial if statement in each method that checks caster lvl)
-  -dmg calc
+    ~~-add if monster~~
+    ~~-add if attacking first or second~~
+    ~~-add exit condition/while loop in dungeon level instance~~
+    ~~-create list skills in skill classes to reference and iterate over~~
+    ~~-create lvl locks on skills (initial if statement in each method that checks caster lvl)~~
+  ~~-dmg calc~~
   -Add "return specs" method for skills for players to see
 -update class bonuses to be multipliers instead of flat numbers
--xp scaling
+~~-xp scaling~~
 -stat scaling
--effects system
-  -poison/bleed
-  -dmg modifiers
-  -buffs/debuffs
 -item library
 -update die function to allow restart before sys exit
 
@@ -68,11 +65,11 @@ Notes
 
 
 Outline
--classes
- -priest: healing, holy magic 
- -mage: high magic damage, elemental magic, squishy 
- -warrior: high defense 
- -ranger: high phys dmg, squishy
+~~-classes~~
+~~ -priest: healing, holy magic~~ 
+ ~~-mage: high magic damage, elemental magic, squishy ~~
+~~ -warrior: high defense ~~
+~~ -ranger: high phys dmg, squishy~~
  -levels
   -lvl cap?
 

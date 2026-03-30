@@ -1,6 +1,6 @@
 from loot.equipment import Inventory
 from .lvls_xp import Leveling
-import sys
+
 
 class Unit():
     def __init__(self,  name, race, unit_class, lvl=1):
@@ -63,20 +63,17 @@ class Player(Unit):
     def take_phys_damage(self, damage): 
         effective_dmg = damage - self.base_stats.phys_armor
         self.base_stats.current_health -= effective_dmg
-        if self.base_stats.current_health <= 0:
-            sys.exit("You died...")
 
     def take_mag_damage(self, damage):
         effective_dmg = damage - self.base_stats.mag_armor
         self.base_stats.current_health -= effective_dmg
-        if self.base_stats.current_health <= 0:
-            sys.exit("You died...")
+        
 
 class Monster(Unit):
     def __init__(self, race, unit_class=None, lvl=1):
         super().__init__(race, unit_class, lvl)
         self.name = race.name
-        self.xp_val = int()
+        self.xp_val = race.xp_val
         self.base_stats = race.base_stats
         self.skills = race.skills
         self.unit_class = unit_class
