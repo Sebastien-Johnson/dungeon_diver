@@ -6,6 +6,7 @@ class Item():
         self.type = item_type
         self.stats = Stats()
 
+
 class Potion(Item):
     def __init__(self, name, item_type):
         super().__init__(name, item_type)
@@ -26,22 +27,22 @@ class Weapon(Equipment):
 class HeadPiece(Equipment):
     def __init__(self, name, item_type, hands, enchantment, class_lock):
         super().__init__(name, item_type, hands, enchantment, class_lock)
-        self.item_type = "head piece"
+        self.item_type = "head"
 
 class ChestPiece(Equipment):
     def __init__(self, name, item_type, hands, enchantment, class_lock):
         super().__init__(name, item_type, hands, enchantment, class_lock)
-        self.item_type = "chest piece"
+        self.item_type = "chest"
 
 class ArmPiece(Equipment):
     def __init__(self, name, item_type, hands, enchantment, class_lock):
         super().__init__(name, item_type, hands, enchantment, class_lock)
-        self.item_type = "arm piece"
+        self.item_type = "arms"
 
 class LegPiece(Equipment):
     def __init__(self, name, item_type, hands, enchantment, class_lock):
         super().__init__(name, item_type, hands, enchantment, class_lock)
-        self.item_type = "leg piece"
+        self.item_type = "legs"
 
 
 

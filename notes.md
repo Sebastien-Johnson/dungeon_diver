@@ -34,12 +34,13 @@ Roadmap
   -use items between combats attacking
   -use items after clearing a lvl
   -loot system
+    -seperate weapon hands tracker and equip weapon function
   -xp update system
 ~~-basic abilities~~
-  -use_ability function
+ ~~ -use_ability function~~
   -ability library
 -combat system
-  -list target health and caster resources after each attack
+  ~~-list target health and caster resources after each attack~~
   -skill choice method
     ~~-add if monster~~
     ~~-add if attacking first or second~~
