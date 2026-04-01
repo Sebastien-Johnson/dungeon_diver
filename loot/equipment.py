@@ -1,4 +1,4 @@
-from .items import *
+from .items_base import *
 
 class Inventory():
     def __init__(self):

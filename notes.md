@@ -53,6 +53,7 @@ Roadmap
 ~~-xp scaling~~
 -stat scaling
 -item library
+  -item quality arg?
 -update die function to allow restart before sys exit
 
 

@@ -37,4 +37,10 @@ class Stats():
         self.max_stamina -= old_stats.max_stamina
         self.current_stamina -= old_stats.max_stamina
         self.phys_pow -= old_stats.phys_pow
+
+    def take_potion(self, potion):
+        self.current_health += potion.health
+        self.current_mana += potion.mana
+        self.current_stamina += potion.stamina
+        
     
