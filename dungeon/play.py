@@ -87,6 +87,10 @@ class Game():
                 return Mage()
             case "cleric":
                 return Cleric()
+            
+    def type_text(self, text_string):
+        for t in text_string:
+            print(f"{t}")
 
     def start_dungeon(self, player):
         new_dungeon = Dungeon(player)

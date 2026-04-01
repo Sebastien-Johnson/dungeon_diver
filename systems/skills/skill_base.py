@@ -42,7 +42,7 @@ class Skills():
                     print(f"The {target.name} has been slain!")
                     time.sleep(1)
                     print(f"{caster.name} gained {target.xp_val} experience points!\n")
-                    caster.leveling.add_xp(target.xp_val)
+                    caster.leveling.add_xp(target.xp_val) 
             if type(target) == Player:
                 sys.exit("You died...")
                 
