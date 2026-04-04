@@ -10,11 +10,11 @@ class Game():
 
     def game_start(self):
         time.sleep(1)
-        print("Welcome,.. to the dungeon.\n")
+        self.type_text(f"Welcome,.. to the dungeon.\n")
         time.sleep(1)
         player1 = self.create_adventurer()
         print("==============================================")
-        print(f"Hello {player1.name} the {player1.race.race_name} {player1.unit_class.classname}!")
+        self.type_text(f"Hello {player1.name} the {player1.race.race_name} {player1.unit_class.classname}!")
         print("==============================================\n")
         time.sleep(1)
         self.start_dungeon(player1)
@@ -29,25 +29,25 @@ class Game():
         return Player(name, race, player_class)
     
     def get_name(self):
-        print("What's your name adventurer?\n")
+        self.type_text("What's your name adventurer?")
         name = input().capitalize()
-        print("\n")
+        self.type_text("")
         return name
 
     def check_race(self):
         valid_races = ["human", "dwarf", "elf", "goliath"]
         known_race = False
-        print("What race are you?")
-        print("[Human, Dwarf, Elf, Goliath]\n")
+        self.type_text("What race are you?")
+        self.type_text("[Human, Dwarf, Elf, Goliath]")
         player_race = input().lower()
-        print("\n")
+        self.type_text("")
 
         while known_race == False:
             if player_race.lower() in valid_races:
                 known_race = True
                 return player_race
             else:
-                print(f"Sorry, '{player_race}' is not a known race. Try again.\n")
+                self.type_text(f"Sorry, '{player_race}' is not a known race. Try again.")
                 player_race = input()
 
     def race_to_obj(self, race):
@@ -64,9 +64,10 @@ class Game():
     def check_class(self):
         valid_classes = ["warrior", "mage", "cleric", "ranger"]
         propper_class = False
-        print("What class are you?")
-        print("[Warrior, Mage, Cleric, Ranger]\n")
+        self.type_text("What class are you?")
+        self.type_text("[Warrior, Mage, Cleric, Ranger]")
         player_class = input().lower()
+        self.type_text("")
         
 
         while propper_class == False:
@@ -74,7 +75,7 @@ class Game():
                 propper_class = True
                 return player_class
             else:
-                print(f"Sorry, '{player_class}' is not a propper class. Try again.\n")
+                self.type_text(f"Sorry, '{player_class}' is not a propper class. Try again.")
                 player_class = input().lower()
     
     def player_class_to_obj(self, player_class):
@@ -90,7 +91,9 @@ class Game():
             
     def type_text(self, text_string):
         for t in text_string:
-            print(f"{t}")
+            print(f"{t}", end="", flush=True)
+            time.sleep(.04)
+        print("")
 
     def start_dungeon(self, player):
         new_dungeon = Dungeon(player)

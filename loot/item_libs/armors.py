@@ -6,117 +6,90 @@ class LightHead(HeadPiece):
         super().__init__(name, item_type)
         self.quality = quality
         self.name = self.quality + name
-        match self.quality:
-            case "cotton":
-                self.stats = Stats(0,1,0,1,0,0,1,0)
-            case "linen":
-                self.stats = Stats(0,2,0,3,0,0,3,0)
-            case "silk":
-                self.stats = Stats(0,3,0,5,0,0,5,0)
-
+        self.low_qual = Stats(0,1,0,1,0,0,1,0)
+        self.med_qual = Stats(0,2,0,3,0,0,3,0)
+        self.high_qual = Stats(0,3,0,5,0,0,5,0)
+        self.stats = self.choose_linen_quality(self.low_qual, self.med_qual, self.high_qual, self.quality)
+        
 class MediumHead(HeadPiece):
     def __init__(self, name, item_type, quality):
         super().__init__(name, item_type)
         self.quality = quality
         self.name = self.quality + name
-        match self.quality:
-            case "rawhide":
-                self.stats = Stats(0,0,1,1,1,0,0,0)
-            case "leather":
-                self.stats = Stats(0,0,2,3,3,0,0,0)
-            case "suede":
-                self.stats = Stats(0,0,3,5,5,0,0,0)
+        self.low_qual = Stats(0,0,1,1,1,0,0,0)
+        self.med_qual = Stats(0,0,2,3,3,0,0,0)
+        self.high_qual = Stats(0,0,3,5,5,0,0,0)
+        self.stats = self.choose_leather_quality(self.low_qual, self.med_qual, self.high_qual, self.quality)
 
 class HeavyHead(HeadPiece):
     def __init__(self, name, item_type, quality):
         super().__init__(name, item_type)
         self.quality = quality
         self.name = self.quality + name
-        match self.quality:
-            case "bronze":
-                self.stats = Stats(2,2,2,-1,0,0,0,0)
-            case "steel":
-                self.stats = Stats(4,4,4,-3,0,0,0,0)
-            case "iron":
-                self.stats = Stats(6,6,6,-5,0,0,0,0)
+        self.low_qual = Stats(2,2,2,-1,0,0,0,0)
+        self.med_qual = Stats(4,4,4,-3,0,0,0,0)
+        self.high_qual = Stats(6,6,6,-5,0,0,0,0)
+        self.stats = self.choose_metal_quality(self.low_qual, self.med_qual, self.high_qual, self.quality)
 
 class LightChest(ChestPiece):
     def __init__(self, name, item_type, quality):
         super().__init__(name, item_type)
         self.quality = quality
         self.name = self.quality + name
-        match self.quality:
-            case "cotton":
-                self.stats = Stats(0,1,0,1,0,0,1,0)
-            case "linen":
-                self.stats = Stats(0,2,0,3,0,0,3,0)
-            case "silk":
-                self.stats = Stats(0,3,0,5,0,0,5,0)
+        self.low_qual = Stats(0,1,0,1,0,0,1,0)
+        self.med_qual = Stats(0,2,0,3,0,0,3,0)
+        self.high_qual = Stats(0,3,0,5,0,0,5,0)
+        self.stats = self.choose_linen_quality(self.low_qual, self.med_qual, self.high_qual, self.quality)
 
 class MediumChest(ChestPiece):
     def __init__(self, name, item_type, quality):
         super().__init__(name, item_type)
         self.quality = quality
         self.name = self.quality + name
-        match self.quality:
-            case "rawhide":
-                self.stats = Stats(0,0,1,1,1,0,0,0)
-            case "leather":
-                self.stats = Stats(0,0,2,3,3,0,0,0)
-            case "suede":
-                self.stats = Stats(0,0,3,5,5,0,0,0)
+        self.low_qual = Stats(0,0,1,1,1,0,0,0)
+        self.med_qual = Stats(0,0,2,3,3,0,0,0)
+        self.high_qual = Stats(0,0,3,5,5,0,0,0)
+        self.stats = self.choose_leather_quality(self.low_qual, self.med_qual, self.high_qual, self.quality)
 
 class HeavyChest(ChestPiece):
     def __init__(self, name, item_type, quality):
         super().__init__(name, item_type)
         self.quality = quality
         self.name = self.quality + name
-        match self.quality:
-            case "bronze":
-                self.stats = Stats(2,2,2,-1,0,0,0,0)
-            case "steel":
-                self.stats = Stats(4,4,4,-3,0,0,0,0)
-            case "iron":
-                self.stats = Stats(6,6,6,-5,0,0,0,0)
+        self.low_qual = Stats(2,2,2,-1,0,0,0,0)
+        self.med_qual = Stats(4,4,4,-3,0,0,0,0)
+        self.high_qual = Stats(6,6,6,-5,0,0,0,0)
+        self.stats = self.choose_metal_quality(self.low_qual, self.med_qual, self.high_qual, self.quality)
 
 class LightArms(ArmPiece):
     def __init__(self, name, item_type, quality):
         super().__init__(name, item_type)
         self.quality = quality
         self.name = self.quality + name
-        match self.quality:
-            case "cotton":
-                self.stats = Stats(0,1,0,1,0,0,1,0)
-            case "linen":
-                self.stats = Stats(0,2,0,3,0,0,3,0)
-            case "silk":
-                self.stats = Stats(0,3,0,5,0,0,5,0)
+        self.low_qual = Stats(0,1,0,1,0,0,1,0)
+        self.med_qual = Stats(0,2,0,3,0,0,3,0)
+        self.high_qual = Stats(0,3,0,5,0,0,5,0)
+        self.stats = self.choose_linen_quality(self.low_qual, self.med_qual, self.high_qual, self.quality)
 
 class MediumArms(ArmPiece):
     def __init__(self, name, item_type, quality):
         super().__init__(name, item_type)
         self.quality = quality
         self.name = self.quality + name
-        match self.quality:
-            case "rawhide":
-                self.stats = Stats(0,0,1,1,1,0,0,0)
-            case "leather":
-                self.stats = Stats(0,0,2,3,3,0,0,0)
-            case "suede":
-                self.stats = Stats(0,0,3,5,5,0,0,0)
+        self.low_qual = Stats(0,0,1,1,1,0,0,0)
+        self.med_qual = Stats(0,0,2,3,3,0,0,0)
+        self.high_qual = Stats(0,0,3,5,5,0,0,0)
+        self.stats = self.choose_leather_quality(self.low_qual, self.med_qual, self.high_qual, self.quality)
 
 class HeavyArms(ArmPiece):
     def __init__(self, name, item_type, quality):
         super().__init__(name, item_type)
         self.quality = quality
         self.name = self.quality + name
-        match self.quality:
-            case "bronze":
-                self.stats = Stats(2,2,2,-1,0,0,0,0)
-            case "steel":
-                self.stats = Stats(4,4,4,-3,0,0,0,0)
-            case "iron":
-                self.stats = Stats(6,6,6,-5,0,0,0,0)
+        self.low_qual = Stats(2,2,2,-1,0,0,0,0)
+        self.med_qual = Stats(4,4,4,-3,0,0,0,0)
+        self.high_qual = Stats(6,6,6,-5,0,0,0,0)
+        self.stats = self.choose_metal_quality(self.low_qual, self.med_qual, self.high_qual, self.quality)
 
 
 class LightLegs(LegPiece):
@@ -124,39 +97,29 @@ class LightLegs(LegPiece):
         super().__init__(name, item_type)
         self.quality = quality
         self.name = self.quality + name
-        match self.quality:
-            case "cotton":
-                self.stats = Stats(0,1,0,1,0,0,1,0)
-            case "linen":
-                self.stats = Stats(0,2,0,3,0,0,3,0)
-            case "silk":
-                self.stats = Stats(0,3,0,5,0,0,5,0)
+        self.low_qual = Stats(0,1,0,1,0,0,1,0)
+        self.med_qual = Stats(0,2,0,3,0,0,3,0)
+        self.high_qual = Stats(0,3,0,5,0,0,5,0)
+        self.stats = self.choose_linen_quality(self.low_qual, self.med_qual, self.high_qual, self.quality)
 
 class MediumLegs(LegPiece):
     def __init__(self, name, item_type, quality):
         super().__init__(name, item_type)
         self.quality = quality
         self.name = self.quality + name
-        match self.quality:
-            case "rawhide":
-                self.stats = Stats(0,0,1,1,1,0,0,0)
-            case "leather":
-                self.stats = Stats(0,0,2,3,3,0,0,0)
-            case "suede":
-                self.stats = Stats(0,0,3,5,5,0,0,0)
+        self.low_qual = Stats(0,0,1,1,1,0,0,0)
+        self.med_qual = Stats(0,0,2,3,3,0,0,0)
+        self.high_qual = Stats(0,0,3,5,5,0,0,0)
+        self.stats = self.choose_leather_quality(self.low_qual, self.med_qual, self.high_qual, self.quality)
 
 class HeavyLegs(LegPiece):
     def __init__(self, name, item_type, quality):
         super().__init__(name, item_type)
         self.quality = quality
         self.name = self.quality + name
-        match self.quality:
-            case "bronze":
-                self.stats = Stats(2,2,2,-1,0,0,0,0)
-            case "steel":
-                self.stats = Stats(4,4,4,-3,0,0,0,0)
-            case "iron":
-                self.stats = Stats(6,6,6,-5,0,0,0,0)
-
+        self.low_qual = Stats(2,2,2,-1,0,0,0,0)
+        self.med_qual = Stats(4,4,4,-3,0,0,0,0)
+        self.high_qual = Stats(6,6,6,-5,0,0,0,0)
+        self.stats = self.choose_metal_quality(self.low_qual, self.med_qual, self.high_qual, self.quality)
         
 

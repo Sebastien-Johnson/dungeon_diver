@@ -1,6 +1,5 @@
 #combat system
 import random, time
-from systems.units import Monster, Player
 
 class Combat():
     def __init__(self, player, monster):
@@ -13,7 +12,6 @@ class Combat():
         elif monster.base_stats.agility > player.base_stats.agility:
             return monster
         else:
-            print("random")
             return random.choice([player, monster])
         
     def combat_instance(self, player, monster): #setup as kwarg and iterate through users for multiplayer?
@@ -30,8 +28,10 @@ class Combat():
             
 
     def choose_player_skill(self, player, monster):
-        print("Choose a skill to use this turn.")
-        print(f"Skills available: {player.skills.skill_list}")    
+        self.type_text("Choose a skill (number) to use this turn.")
+        self.type_text(f"Skills available:")
+        for key, value in player.skills.skill_list.items():
+            self.type_text(f"{key}. {value}")   
         player_choice = input().lower()
         propper_choice = False
 
@@ -39,9 +39,9 @@ class Combat():
             if f"{player_choice}" in player.skills.skill_list:
                 propper_choice = True
                 time.sleep(1)
-                getattr(player.skills, f"{player_choice}")(player, monster)
+                getattr(player.skills, player.skills.skill_list[f"{player_choice}"])(player, monster)
             else:
-                print(f"Sorry, '{player_choice}' is not a skill you know. Try again.\n")
+                self.type_text(f"Sorry, '{player_choice}' is not a skill you know. Try again.")
                 player_choice = input().lower()
        
         
@@ -49,3 +49,10 @@ class Combat():
     def choose_monster_skill(self, monster, player):
         monster_choice = random.choice(monster.skills.skill_list)
         getattr(monster.skills, f"{monster_choice}")(monster, player)
+
+    def type_text(self, text_string):
+        for t in text_string:
+            print(f"{t}", end="", flush=True)
+            time.sleep(.04)
+        print("")
+        

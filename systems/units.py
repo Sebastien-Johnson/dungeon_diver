@@ -1,5 +1,6 @@
 from loot.equipment import Inventory
 from .lvls_xp import Leveling
+import time
 
 
 class Unit():
@@ -15,7 +16,7 @@ class Unit():
         if cost <= self.base_stats.current_stamina:
             self.base_stats.current_stamina -= cost
         else:
-            print("Not enough stamina!")
+            self.type_text("Not enough stamina!")
     
     def restore_stam(self, recovery):
         recovered_stam = recovery + self.base_stats.current_stamina
@@ -28,7 +29,7 @@ class Unit():
         if cost <= self.base_stats.current_mana:
             self.base_stats.current_mana -= cost
         else:
-            print("Not enough mana!")
+            self.type_text("Not enough mana!")
 
     def restore_mana(self, recovery):
         recovered_mana = recovery + self.base_stats.current_mana
@@ -48,6 +49,12 @@ class Unit():
         self.restore_mana(self.base_stats.max_mana)
         self.restore_stam(self.base_stats.max_stamina)
         self.restore_health(self.base_stats.max_health)
+
+    def type_text(self, text_string):
+        for t in text_string:
+            print(f"{t}", end="", flush=True)
+            time.sleep(.04)
+        print("")
 
 
 class Player(Unit):

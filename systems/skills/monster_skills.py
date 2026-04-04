@@ -7,7 +7,7 @@ class SlimeSkills(PhysSkills, MagSkills):
         self.skill_list = ["absorb"]
     
     def absorb(self, caster, target, cost=5, base_pow=5, accuracy=75):
-        print(f"{caster.name} learches at {target.name} to leach their essence!")
+        self.type_text(f"{caster.name} learches at {target.name} to leach their essence!")
         if self.phys_attack(caster, target, cost, base_pow, accuracy):
             self.phys_attack(caster, target, cost, base_pow, 100)
             self.phys_heal(caster, caster, base_pow, 100)
@@ -20,12 +20,12 @@ class BatSkills(PhysSkills, MagSkills):
         self.skill_list = ["scratch", "vamp_bite"]
 
     def scratch(self, caster, target, cost=5, base_pow=1, accuracy=85):
-        print(f"{caster.name} scratches {target.name} with their claws!")
+        self.type_text(f"{caster.name} scratches {target.name} with their claws!")
         self.phys_attack(caster, target, cost, base_pow, accuracy)
         self.monster_status(caster, target)
 
     def vamp_bite(self, caster, target, cost=5, base_pow=5, accuracy=75):
-        print(f"{caster.name} learches at {target.name} to leach their essence!") 
+        self.type_text(f"{caster.name} learches at {target.name} to leach their essence!") 
         if self.phys_attack(caster, target, cost, base_pow, accuracy):
             self.phys_attack(caster, target, cost, base_pow, 100)
             self.phys_heal(caster, caster, base_pow, 100)
@@ -38,12 +38,12 @@ class GoblinSkills(PhysSkills, MagSkills):
         self.skill_list = ["stab", "sling"]
 
     def stab(self, caster, target, cost=5, base_pow=1, accuracy=95):
-        print(f"{caster.name} stabs at {target.name}!") #{caster.inventory.weapons}
+        self.type_text(f"{caster.name} stabs at {target.name}!") #{caster.inventory.weapons}
         self.phys_attack(caster, target, cost, base_pow, accuracy)
         self.monster_status(caster, target)
 
     def sling(self, caster, target, cost=5, base_pow=2, accuracy=80):
-        print(f"{caster.name} slings a rock at {target.name}!")
+        self.type_text(f"{caster.name} slings a rock at {target.name}!")
         self.phys_attack(caster, target, cost, base_pow, accuracy)
         self.monster_status(caster, target)
     
@@ -55,7 +55,7 @@ class DirewolfSkills(PhysSkills, MagSkills):
         self.skill_list = ["bite"]
 
     def bite(self, caster, target, cost=5, base_pow=3, accuracy=80):
-        print(f"{caster.name} lunges to rend {target.name}'s flesh!")
+        self.type_text(f"{caster.name} lunges to rend {target.name}'s flesh!")
         self.phys_attack(caster, target, cost, base_pow, accuracy)
         self.monster_status(caster, target)
 
@@ -66,17 +66,17 @@ class KoboldSkills(PhysSkills, MagSkills):
         self.skill_list = ["hot_breath", "bite", "slash"]
     
     def hot_breath(self, caster, target, cost=5, base_pow=4, accuracy=60):
-        print(f"{caster.name} sends a wave of fire at {target.name}!")
+        self.type_text(f"{caster.name} sends a wave of fire at {target.name}!")
         self.mag_attack(caster, target, cost, base_pow, accuracy)
         self.monster_status(caster, target)
 
     def bite(self, caster, target, cost=5, base_pow=4, accuracy=80):
-        print(f"{caster.name} lunges to rend {target.name}'s flesh!")
+        self.type_text(f"{caster.name} lunges to rend {target.name}'s flesh!")
         self.phys_attack(caster, target, cost, base_pow, accuracy)
         self.monster_status(caster, target)
     
     def slash(self, caster, target, cost=5, base_pow=1, accuracy=95):
-        print(f"{caster.name} slashes at {target.name} with their {caster.inventory.weapon}!")
+        self.type_text(f"{caster.name} slashes at {target.name} with their {caster.inventory.weapon}!")
         self.phys_attack(caster, target, cost, base_pow, accuracy)
         self.monster_status(caster, target)
 
@@ -87,7 +87,7 @@ class TrollSkills(PhysSkills, MagSkills):
         self.skill_list = ["skull_splitter"]
 
     def skull_splitter(self, caster, target, cost=8, base_pow=6, accuracy=60):
-        print(f"{caster.name} drops their {caster.inventory.weapon} down at {target.name}'s with all their might!")
+        self.type_text(f"{caster.name} drops their {caster.inventory.weapon} down at {target.name}'s with all their might!")
         self.phys_attack(caster, target, cost, base_pow, accuracy)
         self.monster_status(caster, target)
 
@@ -98,12 +98,12 @@ class GiantSkills(TrollSkills):
         self.skill_list = ["skull_splitter", "boulder_drop", "earthquake"]
 
     def boulder_drop(self, caster, target, cost=20, base_pow=10, accuracy=80):
-        print(f"{caster.name} RKO's a boulder over {target.name}'s head!")
+        self.type_text(f"{caster.name} RKO's a boulder over {target.name}'s head!")
         self.phys_attack(caster, target, cost, base_pow, accuracy)
         self.monster_status(caster, target)
 
     def earthquake(self, caster, target, cost=30, base_pow=10, accuracy=100):
-        print(f"{caster.name} splits the earth beneath {target.name}!")
+        self.type_text(f"{caster.name} splits the earth beneath {target.name}!")
         self.mag_attack(caster, target, cost, base_pow, accuracy)
         self.monster_status(caster, target)
 
@@ -114,16 +114,16 @@ class DragonSkills(KoboldSkills):
         self.skill_list = ["hot_breath", "bite", "slash", "fireball", "flamethrower", "talon_drop"]
 
     def fireball(self, caster, target, cost=10, base_pow=6, accuracy=70):
-        print(f"{caster.name} hurls a plume of fire at {target.name}!")
+        self.type_text(f"{caster.name} hurls a plume of fire at {target.name}!")
         self.mag_attack(caster, target, cost, base_pow, accuracy)
         self.monster_status(caster, target)
 
     def flamethrower(self, caster, target, cost=20, base_pow=10, accuracy=80):
-        print(f"{caster.name} sends all consuming flame at {target.name}!")
+        self.type_text(f"{caster.name} sends all consuming flame at {target.name}!")
         self.mag_attack(caster, target, cost, base_pow, accuracy)
         self.monster_status(caster, target)
 
     def talon_drop(self, caster, target, cost=10, base_pow=5, accuracy=100):
-        print(f"{caster.name} dives at {target.name} with their talons!")
+        self.type_text(f"{caster.name} dives at {target.name} with their talons!")
         self.phys_attack(caster, target, cost, base_pow, accuracy)
         self.monster_status(caster, target)

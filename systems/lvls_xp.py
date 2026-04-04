@@ -1,3 +1,5 @@
+import time
+
 class ExpBar():
     def __init__(self, xp_to_lvl):
         self.xp_to_lvl = xp_to_lvl
@@ -19,8 +21,8 @@ class Leveling():
         self.xp_bar = ExpBar(self.xp_to_next(self.current_lvl))
         self.current_lvl += 1
         self.add_xp(extra_xp)
-        print("Level up!!")
-        print(f"Level: {self.current_lvl-1} -> {self.current_lvl}\n")
+        self.type_text("Level up!!")
+        self.type_text(f"Level: {self.current_lvl-1} -> {self.current_lvl}\n")
         
 
     def xp_to_next(self, current_lvl):
@@ -29,3 +31,9 @@ class Leveling():
         next_lvl = current_lvl + 1
         xp_to_next = xp_base*xp_multiplier*(next_lvl-1)
         return xp_to_next
+    
+    def type_text(self, text_string):
+        for t in text_string:
+            print(f"{t}", end="", flush=True)
+            time.sleep(.04)
+        print("")

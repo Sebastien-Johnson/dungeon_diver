@@ -11,7 +11,7 @@ class Skills():
         if acc_check <= accuracy:
             return True
         else:
-            print("They missed!")
+            self.type_text("They missed!")
             return False
         
     def check_stamina(self, caster, cost):
@@ -19,14 +19,14 @@ class Skills():
             caster.base_stats.current_stamina -= cost
             return True
         else:
-            print("Not enough stamina!")
+            self.type_text("Not enough stamina!")
 
     def check_mana(self, caster, cost):
         if caster.base_stats.current_mana >= cost:
             caster.base_stats.current_mana -= cost
             return True
         else:
-            print("Not enough mana!")
+            self.type_text("Not enough mana!")
         
     def calc_phys_power(self, caster, base_pow):
         return base_pow + caster.base_stats.phys_pow
@@ -39,25 +39,32 @@ class Skills():
         if target.base_stats.current_health <= 0:
             time.sleep(1)
             if type(target) == Monster:
-                    print(f"The {target.name} has been slain!")
+                    self.type_text(f"The {target.name} has been slain!")
                     time.sleep(1)
-                    print(f"{caster.name} gained {target.xp_val} experience points!\n")
+                    self.type_text(f"{caster.name} gained {target.xp_val} experience points!\n")
                     caster.leveling.add_xp(target.xp_val) 
             if type(target) == Player:
                 sys.exit("You died...")
                 
 
     def phys_player_status(self, caster, target):
-        print(f"{caster.name} health remaining: {caster.base_stats.current_health}/{caster.base_stats.max_health}, stamina remaining {caster.base_stats.current_stamina}/{caster.base_stats.max_stamina}")
-        print(f"{target.name} health remaining: {max(target.base_stats.current_health,0)}/{target.base_stats.max_health}\n")
+        self.type_text(f"{caster.name} health remaining: {caster.base_stats.current_health}/{caster.base_stats.max_health}, stamina remaining {caster.base_stats.current_stamina}/{caster.base_stats.max_stamina}")
+        if target.base_stats.current_health > 0:
+            self.type_text(f"{target.name} health remaining: {max(target.base_stats.current_health,0)}/{target.base_stats.max_health}\n")
 
     def mag_player_status(self, caster, target):
-        print(f"{caster.name} health remaining: {caster.base_stats.current_health}/{caster.base_stats.max_health}, mana remaining {caster.base_stats.current_mana}/{caster.base_stats.max_mana}")
-        print(f"{target.name} health remaining: {max(target.base_stats.current_health,0)}/{target.base_stats.max_health}\n")
+        self.type_text(f"{caster.name} health remaining: {caster.base_stats.current_health}/{caster.base_stats.max_health}, mana remaining {caster.base_stats.current_mana}/{caster.base_stats.max_mana}")
+        self.type_text(f"{target.name} health remaining: {max(target.base_stats.current_health,0)}/{target.base_stats.max_health}\n")
     
     def monster_status(self, caster, target):
-        print(f"{target.name} health remaining: {target.base_stats.current_health}/{target.base_stats.max_health}")
-        print(f"{caster.name} health remaining: {caster.base_stats.current_health}/{caster.base_stats.max_health}\n")
+        self.type_text(f"{target.name} health remaining: {target.base_stats.current_health}/{target.base_stats.max_health}")
+        self.type_text(f"{caster.name} health remaining: {caster.base_stats.current_health}/{caster.base_stats.max_health}\n")
+    
+    def type_text(self, text_string):
+        for t in text_string:
+            print(f"{t}", end="", flush=True)
+            time.sleep(.04)
+        print("")
         
            
 class PhysSkills(Skills):
@@ -71,7 +78,7 @@ class PhysSkills(Skills):
                 target.take_phys_damage(self.calc_phys_power(caster, base_pow))
                 hp2 = hp1 - target.base_stats.current_health
                 time.sleep(1)
-                print(f"{caster.name} did {hp2} physical damage to {target.name}!\n")
+                self.type_text(f"{caster.name} did {hp2} physical damage to {target.name}!\n")
                 self.check_if_slain(caster, target)
                 return True
     
@@ -82,7 +89,7 @@ class PhysSkills(Skills):
                 target.restore_health(self.calc_phys_power(caster, base_pow))
                 hp2 = hp1 - target.base_stats.current_health 
                 time.sleep(1)
-                print(f"{target.name} restored {hp2} health points!")
+                self.type_text(f"{target.name} restored {hp2} health points!")
                 return True   
 
 class MagSkills(Skills):
@@ -96,7 +103,7 @@ class MagSkills(Skills):
                 target.take_mag_damage(self.calc_mag_power(caster, base_pow))
                 hp2 = hp1 - target.base_stats.current_health
                 time.sleep(1)
-                print(f"{caster.name} did {hp2} magic damage to {target.name}!!")
+                self.type_text(f"{caster.name} did {hp2} magic damage to {target.name}!!")
                 self.check_if_slain(caster, target)
                 return True
     
@@ -107,7 +114,9 @@ class MagSkills(Skills):
                 target.restore_health(self.calc_mag_power)
                 hp2 = hp1 - target.base_stats.current_health
                 time.sleep(1)
-                print(f"{target.name} restored {hp2} health points!") 
+                self.type_text(f"{target.name} restored {hp2} health points!") 
                 return True
+            
+    
 
 

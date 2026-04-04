@@ -20,6 +20,50 @@ class Equipment(Item):
         super().__init__(name, item_type)
         self.quality = quality
 
+    def choose_metal_quality(self, low, medium, high, given_quality):
+        match given_quality:
+            case "busted bronze":
+                return low
+            case "aight iron":
+                return medium
+            case "sick steel":
+                return high
+    def choose_wood_quality(self, low, medium, high, given_quality):
+        match given_quality:
+            case "musty birch":
+                return low
+            case "ok oak":
+                return medium
+            case "fine pine":
+                return high
+
+    def choose_linen_quality(self, low, medium, high, given_quality):
+        match given_quality:
+            case "crusty cotton":
+                return low
+            case "linen":
+                return medium
+            case "silk":
+                return high
+
+    def choose_leather_quality(self, low, medium, high, given_quality):
+        match given_quality:
+            case "raunchy rawhide":
+                return low
+            case "lowkey leather":
+                return medium
+            case "sassy suede":
+                return high
+            
+    def choose_orb_quality(self, low, medium, high, given_quality):
+        match given_quality:
+            case "cloudy":
+                return low
+            case "clearr":
+                return medium
+            case "flourescent":
+                return high
+
 class Weapon(Equipment):
     def __init__(self, name, item_type, hands, quality):
         super().__init__(name, item_type, hands, quality)
