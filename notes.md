@@ -39,6 +39,7 @@ Roadmap
 ~~-basic abilities~~
  ~~ -use_ability function~~
   -ability library
+  -add stamina cost to ability selection menu
 -combat system
   ~~-list target health and caster resources after each attack~~
   -skill choice method
@@ -52,12 +53,17 @@ Roadmap
 -update class bonuses to be multipliers instead of flat numbers
 ~~-xp scaling~~
 -stat scaling
--item library
-  -item quality arg?
+~~-item library~~
+  ~~-item quality arg?~~
+  -print item stats when asking to equip
+  -print stat differences once equiped
 -update die function to allow restart before sys exit
 
 
 Notes
+- add quality checker to forge armor, not weight
+- fix item quality+name
+
  -'score' by XP obtained or dungeon lvl reached
   -Bonus for no damage instances
  -initiation and termination

@@ -1,7 +1,6 @@
 from .player_races import Race
-from .skills.monster_skills import *
-from .stats import Stats
-
+from ..skills.monster_skills import *
+from ..stats import Stats
 
 class MonsterRace(Race):
     def __init__(self):
@@ -10,7 +9,7 @@ class MonsterRace(Race):
 
     def trait(self):
         pass
-
+    
 class Slime(MonsterRace):
     def __init__(self):
         super().__init__()

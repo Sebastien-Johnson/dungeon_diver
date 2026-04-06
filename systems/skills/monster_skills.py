@@ -6,11 +6,10 @@ class SlimeSkills(PhysSkills, MagSkills):
     
         self.skill_list = ["absorb"]
     
-    def absorb(self, caster, target, cost=5, base_pow=5, accuracy=75):
+    def absorb(self, caster, target, cost=5, base_pow=2, accuracy=75):
         self.type_text(f"{caster.name} learches at {target.name} to leach their essence!")
         if self.phys_attack(caster, target, cost, base_pow, accuracy):
-            self.phys_attack(caster, target, cost, base_pow, 100)
-            self.phys_heal(caster, caster, base_pow, 100)
+            self.phys_heal(caster, caster, cost, base_pow, 100)
         self.monster_status(caster, target)
 
 class BatSkills(PhysSkills, MagSkills):

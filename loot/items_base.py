@@ -28,6 +28,7 @@ class Equipment(Item):
                 return medium
             case "sick steel":
                 return high
+            
     def choose_wood_quality(self, low, medium, high, given_quality):
         match given_quality:
             case "musty birch":
@@ -59,35 +60,35 @@ class Equipment(Item):
         match given_quality:
             case "cloudy":
                 return low
-            case "clearr":
+            case "clear":
                 return medium
             case "flourescent":
                 return high
 
 class Weapon(Equipment):
-    def __init__(self, name, item_type, hands, quality):
-        super().__init__(name, item_type, hands, quality)
+    def __init__(self, quality, name, hands):
+        super().__init__(quality, name, hands)
         self.hands = hands
 
 class HeadPiece(Equipment):
-    def __init__(self, name, item_type, quality):
+    def __init__(self, quality, name, item_type):
         super().__init__(name, item_type, quality)
-        self.item_type = "head"
+        
 
 class ChestPiece(Equipment):
-    def __init__(self, name, item_type, quality):
+    def __init__(self, quality, name, item_type):
         super().__init__(name, item_type, quality)
-        self.item_type = "chest"
+        
 
 class ArmPiece(Equipment):
-    def __init__(self, name, item_type, quality):
+    def __init__(self, quality, name, item_type):
         super().__init__(name, item_type, quality)
-        self.item_type = "arms"
+        
 
 class LegPiece(Equipment):
-    def __init__(self, name, item_type, quality):
+    def __init__(self, quality, name, item_type):
         super().__init__(name, item_type, quality)
-        self.item_type = "legs"
+        
 
 
 

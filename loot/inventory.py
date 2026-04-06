@@ -1,6 +1,6 @@
 from .items_base import *
 
-class Inventory():
+class UnitInventory():
     def __init__(self):
         self.bag = []
         self.head = HeadPiece
@@ -9,6 +9,9 @@ class Inventory():
         self.arms = ArmPiece
         self.weapons = [Weapon]
         self.armor = [self.head, self.chest, self.legs, self.arms]
+        self.equiped = [self.armor]
+        for w in self.weapons:
+            self.equiped.append(w)
 
     def add_to_bag(self, item):
         self.bag.append(item)
@@ -18,25 +21,33 @@ class Inventory():
 
     def throw_item(self, item):
         self.bag.remove(item)
+    
+    def equip_item(self, item, player):
+        if item == type(Equipment):
+            self.equip_armor(item, player)
+        elif item == type(Weapon):
+            self.equip_weapon(item, player)
 
-    def equip_armor(self, player, body_part, current_armor, new_armor):
-        if current_armor.item_type == new_armor.item_type:
-            player.stats.remove_stats(current_armor)
-            player.stats.add_stats(new_armor)
-            self.inventory.add_to_bag(current_armor)
-            match body_part:
-                case "head":
-                    self.head = new_armor
-                case "chest":
-                    self.chest = new_armor
-                case "arms":
-                    self.arms = new_armor
-                case "legs":
-                    self.legs = new_armor
+    def equip_armor(self, new_armor, player):
+        for armor in self.armor:
+            if new_armor.item_type == armor.item_type:
+                player.stats.remove_stats(armor)
+                player.stats.add_stats(new_armor)
+                self.inventory.add_to_bag(armor)
+                match new_armor.item_type:
+                    case "head":
+                        self.head = new_armor
+                    case "chest":
+                        self.chest = new_armor
+                    case "arms":
+                        self.arms = new_armor
+                    case "legs":
+                        self.legs = new_armor
+            return
         else:
             print("Can't wear that there!")
 
-    def equip_weapon(self, player, new_weapon):
+    def equip_weapon(self, new_weapon, player):
         self.weapons.append(new_weapon)
         player.stats.add_stats(new_weapon)
 

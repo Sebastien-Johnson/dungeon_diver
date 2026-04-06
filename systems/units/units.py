@@ -1,5 +1,6 @@
-from loot.equipment import Inventory
-from .lvls_xp import Leveling
+from loot.inventory import UnitInventory
+from ..lvls_xp import Leveling
+from loot.loot_drop import LootMaker
 import time
 
 
@@ -10,7 +11,7 @@ class Unit():
         self.unit_class = unit_class
         self.leveling = Leveling()
         self.current_lvl = self.leveling.current_lvl
-        self.inventory = Inventory()
+        self.inventory = UnitInventory()
     
     def use_stam(self, cost):
         if cost <= self.base_stats.current_stamina:
@@ -95,5 +96,10 @@ class Monster(Unit):
     def take_mag_damage(self, damage):
         effective_dmg = damage - self.base_stats.mag_armor
         self.base_stats.current_health -= effective_dmg
+
+    def add_loot_equipment(self, curr_dng_lvl):
+        dungeon_spoils = LootMaker()
+        loot = dungeon_spoils.generate_loot(curr_dng_lvl)
+        self.inventory.equip_item(loot, self)
         
 

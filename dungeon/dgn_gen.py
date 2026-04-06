@@ -1,11 +1,11 @@
 import random, time
 from .combat import Combat
-from systems.monster_races import *
-from systems.units import Monster
+from systems.units.monster_races import *
+from systems.units.units import Monster
 
 class Dungeon():
     def __init__(self, player):
-        self.dng_lvl_count = 0
+        self.curr_dng_lvl = 0
         self.player = player
         self.lower_monsters = ["slime", "bat", "goblin"]
         self.middle_monsters = ["kobold", "direwolf", "troll"]
@@ -14,33 +14,39 @@ class Dungeon():
         
 
     def generate_dungeon(self):
-        self.dng_lvl_count += 1
+        self.curr_dng_lvl += 1
         #allow for potions between levels
-        if self.dng_lvl_count%10 == 0:
+        if self.curr_dng_lvl%10 == 0:
             pass
             #check if current lvl is rest area
         else:
             while self.player.base_stats.current_health > 0:
-                monster = self.generate_monster(self.dng_lvl_count, self.player)
-                self.type_text(f"You descend to floor {self.dng_lvl_count} of the dungeon...")
+                monster = self.generate_monster(self.curr_dng_lvl)
+                self.type_text(f"You descend to floor {self.curr_dng_lvl} of the dungeon...")
                 time.sleep(1)
                 self.type_text(f"A {monster.name} approaches!!\n")
                 time.sleep(1)
                 self.start_combat(self.player, monster)
-                self.dng_lvl_count += 1
+                self.curr_dng_lvl += 1
         
 
-    def generate_monster(self, dng_lvl_count, player):
-        if dng_lvl_count%10 in range(1, 4) or dng_lvl_count in range(1, 4):
+    def generate_monster(self, curr_dng_lvl):
+        if curr_dng_lvl%10 in range(1, 4) or curr_dng_lvl in range(1, 4):
             monster_race = random.choice(self.lower_monsters)
-            return Monster(self.check_monster_race(monster_race))
-        elif dng_lvl_count%10 in range(4, 7) or dng_lvl_count in range(4, 7):
+            monster = Monster(self.check_monster_race(monster_race))
+            monster.add_loot_equipment(self.curr_dng_lvl)
+            return monster
+        elif curr_dng_lvl%10 in range(4, 7) or curr_dng_lvl in range(4, 7):
             monster_race = random.choice(self.middle_monsters)
-            return Monster(self.check_monster_race(monster_race))
-        elif dng_lvl_count%10 in range(7, 10) or dng_lvl_count in range(7, 10):
+            monster = Monster(self.check_monster_race(monster_race))
+            monster.add_loot_equipment(self.curr_dng_lvl)
+            return monster
+        elif curr_dng_lvl%10 in range(7, 10) or curr_dng_lvl in range(7, 10):
             monster_race = random.choice(self.higher_monsters)
-            return Monster(self.check_monster_race(monster_race))
-        elif dng_lvl_count%10 == 0:
+            monster = Monster(self.check_monster_race(monster_race))
+            monster.add_loot_equipment(self.curr_dng_lvl)
+            return monster
+        elif curr_dng_lvl%10 == 0:
             self.player.rest()
             self.type_text("There appears to be no monsters around...")
             self.type_text("You've finally reach a rest area!")
@@ -77,7 +83,7 @@ class Dungeon():
         time.sleep(1)
         while player.base_stats.current_health > 0 and monster.base_stats.current_health > 0:
             dng_lvl_combat.combat_instance(player, monster)
-        self.type_text(f"Level {self.dng_lvl_count} complete!")
+        self.type_text(f"Level {self.curr_dng_lvl} complete!")
         self.cont()
         print("==============================================")
 

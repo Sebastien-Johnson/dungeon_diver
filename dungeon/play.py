@@ -1,6 +1,6 @@
-from systems.units import *
-from systems.classes import *
-from systems.player_races import *
+from systems.units.units import *
+from systems.units.classes import *
+from systems.units.player_races import *
 from .dgn_gen import *
 import time
 

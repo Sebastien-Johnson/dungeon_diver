@@ -1,5 +1,5 @@
 import random, time, sys
-from systems.units import Monster, Player
+from systems.units.units import Monster, Player
 
 
 class Skills():
@@ -45,6 +45,15 @@ class Skills():
                     caster.leveling.add_xp(target.xp_val) 
             if type(target) == Player:
                 sys.exit("You died...")
+
+    def check_if_loot(self, caster, target):
+        for loot in target.inventory.equiped:
+            self.type_text(f"{target.name} had a {loot.name}!")
+            self.type_text("Choose to equip? (y/n)")
+            response = input()
+            if response in ["yes", "y"]:
+                caster.inventory.equip_item(loot)
+                self.type_text(f"{loot.name} equiped!")
                 
 
     def phys_player_status(self, caster, target):
@@ -87,7 +96,7 @@ class PhysSkills(Skills):
             if self.check_accuracy(accuracy):
                 hp1 = target.base_stats.current_health
                 target.restore_health(self.calc_phys_power(caster, base_pow))
-                hp2 = hp1 - target.base_stats.current_health 
+                hp2 = target.base_stats.current_health - hp1
                 time.sleep(1)
                 self.type_text(f"{target.name} restored {hp2} health points!")
                 return True   
