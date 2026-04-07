@@ -1,3 +1,5 @@
+import time
+
 class Stats():
     def __init__(self, max_health=0, phys_armor=0, mag_armor=0, agility=0, max_mana=0, mag_pow=0, max_stamina=0, phys_pow=0):
         self.max_health = max_health
@@ -11,6 +13,14 @@ class Stats():
         self.max_stamina = max_stamina
         self.current_stamina = max_stamina
         self.phys_pow = phys_pow 
+        self.all_stats = {"HP" : self.max_health,
+                          "Physical Armor" : self.phys_armor, 
+                          "Magic Armor" : self.mag_armor, 
+                           "Agility" : self.agility, 
+                           "Mana" : self.max_mana, 
+                           "Magic Power" : self.mag_pow, 
+                           "Stamina" : self.max_stamina, 
+                           "Physical Power" : self.phys_pow}
 
     def add_stats(self, new_stats):
         self.max_health += new_stats.max_health
@@ -38,9 +48,19 @@ class Stats():
         self.current_stamina -= old_stats.max_stamina
         self.phys_pow -= old_stats.phys_pow
 
+    def show_stat_update(self, old_stats):
+        for key, value in old_stats.all_stats:
+            self.type_text(f"{key}: {value} -> {self.all_stats[value]}", .02)
+
     def take_potion(self, potion):
         self.current_health += potion.health
         self.current_mana += potion.mana
         self.current_stamina += potion.stamina
+    
+    def type_text(self, text_string, speed):
+        for t in text_string:
+            print(f"{t}", end="", flush=True)
+            time.sleep(speed)
+        print("")
         
     

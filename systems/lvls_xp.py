@@ -11,10 +11,12 @@ class Leveling():
         self.xp_bar = ExpBar(100)
         self.current_lvl = 1
 
-    def add_xp(self, new_xp):
+    def add_xp(self, player, new_xp):
         self.xp_bar.current_xp += new_xp
         if self.xp_bar.current_xp >= self.xp_bar.xp_to_lvl:
+            stats1 = player.base_stats
             self.lvl_up()
+            
 
     def lvl_up(self):
         extra_xp = self.xp_bar.current_xp - self.xp_bar.xp_to_lvl
