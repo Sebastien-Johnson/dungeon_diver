@@ -4,6 +4,7 @@ from loot.make_loot import LootMaker
 import time
 import math
 
+
 class Unit():
     def __init__(self,  name, race, unit_class, lvl=1):
         self.name = name
@@ -76,10 +77,11 @@ class Player(Unit):
     def __init__(self, name, race, unit_class, lvl=1):
         super().__init__(name, race, unit_class, lvl)
         self.name = name
+        self.lvl = lvl
         self.current_xp = int()
         self.xp_to_lvl = int()
-        self.base_stats = unit_class.stats
-        self.base_stats.add_stats(race.stat_bonuses)
+        self.initial_stats = unit_class.stats #static lvl 1 stats
+        self.base_stats = self.initial_stats.add_stats(race.stat_bonuses) #scaling stats with flat racial & equipment bonuses
         self.skills = unit_class.skills
 
     def take_phys_damage(self, damage): 

@@ -52,6 +52,33 @@ class Stats():
         for key, value in old_stats.all_stats:
             self.type_text(f"{key}: {value} -> {self.all_stats[value]}", .02)
 
+    def lvl_up_once(self, unit, unit_level):
+        for key, value in unit.initial_stats.all_stats:
+            match value:
+                case 1:
+                    if unit_level%5 == 0:
+                        self.all_stats[value] +=1
+                case 2:
+                    if unit_level%4 == 0:
+                        self.all_stats[value]  +=1
+                case 3:
+                    if unit_level%3 == 0:
+                        self.all_stats[value]  +=1
+                case 4:
+                    if unit_level%2 == 0:
+                        self.all_stats[value]  +=1
+                case 5:
+                    self.all_stats[value]  += 1
+            match key:
+                case "Mana":
+                    self.max_mana += 3
+                case "Stamina":
+                    self.max_stamina += 3
+
+    def lvl_up_to_lvl(self, unit_level):
+        for l in range(unit_level+1):
+            self.lvl_up_once(l)
+
     def take_potion(self, potion):
         self.current_health += potion.health
         self.current_mana += potion.mana

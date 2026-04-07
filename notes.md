@@ -55,14 +55,15 @@ Roadmap
 -stat scaling
 ~~-item library~~
   ~~-item quality arg?~~
-  -print item stats when asking to equip
-  -print stat differences once equiped
--update die function to allow restart before sys exit
+  
 
 
 Notes
-- add quality checker to forge armor, not weight
-- fix item quality+name
+- Seperate initial stats, base stats and bonus stats (base+equipment)
+- print item stats when asking to equip
+  - print stat differences once equiped
+- update die function to allow restart before sys exit
+- add immediate leveling function to monster creation
 
  -'score' by XP obtained or dungeon lvl reached
   -Bonus for no damage instances
