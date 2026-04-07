@@ -25,7 +25,7 @@ class LootMaker():
         self.wood_weapons = ["shield", "wand", "staff", "bow"]
         self.glass_weapons = ["orb"]
         self.all_weapons = self.metal_weapons+self.wood_weapons+self.glass_weapons
-        self.armor_materials = ["fabirc", "leather", "metal"]
+        self.armor_materials = ["fabric", "leather", "metal"]
         self.armor_types = ["head", "chest", "arms", "legs"]
     
     def generate_loot(self, curr_dng_lvl):
@@ -35,17 +35,13 @@ class LootMaker():
         else:
             return [self.generate_armor(curr_dng_lvl), "armor"]
 
-    def generate_weapon(self, curr_dng_lvl):
+    def generate_weapon(self, curr_dng_lvl): 
         weapon_type = random.choice(self.all_weapons)
         material = self.find_weapon_material(weapon_type)
         quality_lvl = self.drop_rate(curr_dng_lvl)
         if quality_lvl == False:
-            print(quality_lvl)
-            print(material)
             return 
         else:
-            print(quality_lvl)
-            print(material)
             quality = quality_lvl[material]
         return self.forge_weapon(weapon_type, quality)
         
@@ -80,22 +76,19 @@ class LootMaker():
                 return Orb(quality)
 
         
-    def generate_armor(self, curr_dng_lvl):
+    def generate_armor(self, curr_dng_lvl): 
         armor_type = random.choice(self.armor_types)
         material = random.choice(self.armor_materials)
         quality_lvl = self.drop_rate(curr_dng_lvl)
         if quality_lvl == False:
-            print(quality_lvl)
             return
         else:
-            print(quality_lvl)
-            print(material)
             quality = quality_lvl[material]
         return self.forge_armor(armor_type, material, quality)
 
     def forge_armor(self, armor_type, material, quality):
         match material:
-            case "heavy":
+            case "metal":
                 match armor_type:
                     case "head":
                         return HeavyHead(quality)
@@ -105,7 +98,7 @@ class LootMaker():
                         return HeavyArms(quality)
                     case "legs":
                         return HeavyLegs(quality)
-            case "medium":
+            case "leather":
                 match armor_type:
                     case "head":
                         return MediumHead(quality)
@@ -115,7 +108,7 @@ class LootMaker():
                         return MediumArms(quality)
                     case "legs":
                         return MediumLegs(quality)
-            case "light":
+            case "fabric":
                 match armor_type:
                     case "head":
                         return LightHead(quality)

@@ -1,24 +1,25 @@
 from systems.stats import Stats
 
 class Item():
-    def __init__(self, name, item_type):
+    def __init__(self, name):
         self.name = name
-        self.item_type = item_type
         self.stats = Stats()
 
 
 class Potion(Item):
     def __init__(self, name, item_type, health, mana, stamina):
-        super().__init__(name, item_type)
+        super().__init__(name)
         self.item_type = "Potion"
         self.health = health
         self.mana = mana
         self.stamina = stamina
+        self.item_type = item_type
 
 class Equipment(Item):
-    def __init__(self, name, item_type, quality):
-        super().__init__(name, item_type)
+    def __init__(self, quality, name):
+        super().__init__(name)
         self.quality = quality
+        
 
     def choose_metal_quality(self, low, medium, high, given_quality):
         match given_quality:
@@ -67,28 +68,29 @@ class Equipment(Item):
 
 class Weapon(Equipment):
     def __init__(self, quality, name, hands):
-        super().__init__(quality, name, hands)
+        super().__init__(quality, name)
         self.hands = hands
 
 class HeadPiece(Equipment):
     def __init__(self, quality, name, item_type):
-        super().__init__(name, item_type, quality)
+        super().__init__(quality, name)
+        self.item_type = item_type
         
 
 class ChestPiece(Equipment):
     def __init__(self, quality, name, item_type):
-        super().__init__(name, item_type, quality)
-        
+        super().__init__(quality, name)
+        self.item_type = item_type
 
 class ArmPiece(Equipment):
     def __init__(self, quality, name, item_type):
-        super().__init__(name, item_type, quality)
-        
+        super().__init__(quality, name)
+        self.item_type = item_type
 
 class LegPiece(Equipment):
     def __init__(self, quality, name, item_type):
-        super().__init__(name, item_type, quality)
-        
+        super().__init__(quality, name)
+        self.item_type = item_type
 
 
 

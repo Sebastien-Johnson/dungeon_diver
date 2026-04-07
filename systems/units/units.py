@@ -1,6 +1,6 @@
 from loot.inventory import UnitInventory
 from ..lvls_xp import Leveling
-from loot.loot_drop import LootMaker
+from loot.make_loot import LootMaker
 import time
 
 
