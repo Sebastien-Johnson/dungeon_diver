@@ -13,8 +13,8 @@ class MonsterRace(Race):
 class Slime(MonsterRace):
     def __init__(self):
         super().__init__()
-        self.name = "slime"
-        self.base_stats = Stats(5, 0, 0, 1, 0, 0, 20, 5)
+        self.name = "Slime"
+        self.base_stats = Stats(5, 0, 0, 1, 0, 0, 20, 2)
         self.skills = SlimeSkills()
         self.xp_val = 50
 
@@ -24,7 +24,7 @@ class Slime(MonsterRace):
 class Bat(MonsterRace):
     def __init__(self):
         super().__init__()
-        self.name = "bat"
+        self.name = "Bat"
         self.base_stats = Stats(5, 0, 0, 1, 0, 0, 20, 5)
         self.skills = BatSkills()
         self.xp_val = 50
@@ -35,7 +35,7 @@ class Bat(MonsterRace):
 class Goblin(MonsterRace):
     def __init__(self):
         super().__init__()
-        self.name = "goblin"
+        self.name = "Goblin"
         self.base_stats = Stats(5, 0, 0, 1, 0, 0, 20, 5)
         self.skills = GoblinSkills()
         self.xp_val = 50
@@ -46,7 +46,7 @@ class Goblin(MonsterRace):
 class Kobold(MonsterRace):
     def __init__(self):
         super().__init__()
-        self.name = "kobold"
+        self.name = "Kobold"
         self.base_stats = Stats(1)
         self.skills = KoboldSkills()
 
@@ -56,7 +56,7 @@ class Kobold(MonsterRace):
 class DireWolf(MonsterRace):
     def __init__(self):
         super().__init__()
-        self.name = "dire wolf"
+        self.name = "Dire wolf"
         self.base_stats = Stats(1)
         self.skills = DirewolfSkills()
 
@@ -66,7 +66,7 @@ class DireWolf(MonsterRace):
 class Troll(MonsterRace):
     def __init__(self):
         super().__init__()
-        self.name = "troll"
+        self.name = "Troll"
         self.base_stats = Stats(1)
         self.skills = TrollSkills()
 
@@ -76,7 +76,7 @@ class Troll(MonsterRace):
 class Giant(MonsterRace):
     def __init__(self):
         super().__init__()
-        self.name = "giant"
+        self.name = "Giant"
         self.base_stats = Stats(1)
         self.skills = GiantSkills()
 
@@ -86,7 +86,7 @@ class Giant(MonsterRace):
 class Dragon(MonsterRace):
     def __init__(self):
         super().__init__()
-        self.name = "dragon"
+        self.name = "Dragon"
         self.base_stats = Stats(1)
         self.skills = DragonSkills()
 

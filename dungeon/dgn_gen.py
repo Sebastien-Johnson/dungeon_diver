@@ -1,17 +1,15 @@
 import random, time
 from .combat import Combat
 from systems.units.monster_races import *
-from systems.units.units import Monster
+from systems.units.units_base import Monster
 
 class Dungeon():
     def __init__(self, player):
         self.curr_dng_lvl = 0
         self.player = player
-        self.lower_monsters = ["slime", "bat", "goblin"]
-        self.middle_monsters = ["kobold", "direwolf", "troll"]
-        self.higher_monsters = ["giant", "dragon"]
-        
-        
+        self.lower_monsters = ["Slime", "Bat", "Goblin"]
+        self.middle_monsters = ["Kobold", "Direwolf", "Troll"]
+        self.higher_monsters = ["Giant", "Dragon"]
 
     def generate_dungeon(self):
         self.curr_dng_lvl += 1
@@ -47,7 +45,7 @@ class Dungeon():
             monster.add_loot_equipment(self.curr_dng_lvl)
             return monster
         elif curr_dng_lvl%10 == 0:
-            self.player.rest()
+            self.player.long_rest()
             self.type_text("There appears to be no monsters around...")
             self.type_text("You've finally reach a rest area!")
             self.type_text(f"{self.player.name} rested and their stats were restored!!")
@@ -58,21 +56,21 @@ class Dungeon():
 
     def check_monster_race(self, monster_race):
         match monster_race:
-            case "slime":
+            case "Slime":
                 return Slime()
-            case "bat":
+            case "Bat":
                 return Bat()
-            case "goblin":
+            case "Goblin":
                 return Goblin()
-            case "kobold":
+            case "Kobold":
                 return Kobold()
-            case "direwolf":
+            case "Direwolf":
                 return DireWolf()
-            case "troll":
+            case "Troll":
                 return Troll()
-            case "giant":
+            case "Giant":
                 return Giant()
-            case "dragon":
+            case "Dragon":
                 return Dragon()
             
 
@@ -83,15 +81,18 @@ class Dungeon():
         time.sleep(1)
         while player.base_stats.current_health > 0 and monster.base_stats.current_health > 0:
             dng_lvl_combat.combat_instance(player, monster)
-        self.type_text(f"Level {self.curr_dng_lvl} complete!")
-        self.cont()
+        self.type_text(f"Floor {self.curr_dng_lvl} complete!")
+        monster.inventory.loot_body(player)
+        self.cont(player)
         print("==============================================")
 
-    def cont(self):
+    def cont(self, player):
         self.type_text(f"Venture on? (y/n)")
         reply = input().lower()
         while True:
             if reply in ["yes", "y"]:
+                self.type_text(f"{player.name} catches their breath between floors.")
+                player.short_rest(self.curr_dng_lvl)
                 break
             else:
                 self.type_text("Sorry, didn't hear you (coward).")

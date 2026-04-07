@@ -2,7 +2,7 @@ from loot.inventory import UnitInventory
 from ..lvls_xp import Leveling
 from loot.make_loot import LootMaker
 import time
-
+import math
 
 class Unit():
     def __init__(self,  name, race, unit_class, lvl=1):
@@ -46,7 +46,21 @@ class Unit():
         else:
             self.base_stats.current_health = recovered_health
 
-    def rest(self):
+    def short_rest(self, curr_dng_lvl):
+        initial_hp = self.base_stats.current_health
+        self.restore_health(1)
+        self.type_text(f"HP: {initial_hp} -> {self.base_stats.current_health}")
+        restore = 5 + math.floor(curr_dng_lvl/10)
+        if self.base_stats.max_mana > 0:
+            initial_mana = self.base_stats.current_mana
+            self.restore_mana(restore)
+            self.type_text(f"Mana: {initial_mana} -> {self.base_stats.current_mana}")
+        if self.base_stats.max_stamina > 0:
+            initial_stamina = self.base_stats.current_stamina
+            self.restore_stam(restore)
+            self.type_text(f"Stamina: {initial_stamina} -> {self.base_stats.current_stamina}")
+
+    def long_rest(self):
         self.restore_mana(self.base_stats.max_mana)
         self.restore_stam(self.base_stats.max_stamina)
         self.restore_health(self.base_stats.max_health)
@@ -87,6 +101,7 @@ class Monster(Unit):
         self.unit_class = unit_class
         if self.unit_class:
             self.base_stats.add_stats(unit_class.base_stats)
+            self.name = unit_class.name + " " + race.name
 
     def take_phys_damage(self, damage):
         effective_dmg = damage - self.base_stats.phys_armor

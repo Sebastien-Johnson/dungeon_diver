@@ -1,17 +1,28 @@
 from .items_base import *
+import time
 
 class UnitInventory():
     def __init__(self):
         self.bag = []
-        self.head = HeadPiece
-        self.chest = ChestPiece
-        self.legs = LegPiece
-        self.arms = ArmPiece
-        self.weapons = [Weapon]
-        self.armor = [self.head, self.chest, self.legs, self.arms]
-        self.equiped = [self.armor]
+        self.head = []
+        self.chest = []
+        self.legs = []
+        self.arms = []
+        self.weapons = []
+        self.armor = []
+        if self.head:
+            self.armor.append(self.head[0])
+        if self.chest:
+            self.armor.append(self.chest[0])
+        if self.arms:
+            self.armor.append(self.arms[0])
+        if self.legs:
+            self.armor.append(self.legs[0])
+        self.equipped = []
+        for a in self.armor:
+            self.equipped.append(a)
         for w in self.weapons:
-            self.equiped.append(w)
+            self.equipped.append(w)
 
     def add_to_bag(self, item):
         self.bag.append(item)
@@ -89,4 +100,31 @@ class UnitInventory():
             for w in self.weapons:
                 self.unequip_weapon(player, w)
             self.equip_weapon(player, new_weapon)
+
+    def loot_body(self, player):
+        for i in self.equipped:
+            self.type_text(f"They dropped a {i.name}!!")
+            self.type_text("Take it? (y/n)")
+            take = input()
+            while True:
+                if take in ["yes", "y"]:
+                    self.type_text("Bag or equip? (1/2)")
+                    bag_equip = input()
+                    if bag_equip == "1":
+                        player.inventory.add_to_bag(i, player)
+                        break
+                    elif bag_equip == "2":
+                        player.inventory.equip_item(i, player)
+                        break
+                elif take in ["no", "n"]:
+                    self.type_text("Oh well, your loss.")
+                    break
+                else:
+                    self.type_text("Unclear answer, try again.")
+                
     
+    def type_text(self, text_string):
+        for t in text_string:
+            print(f"{t}", end="", flush=True)
+            time.sleep(.04)
+        print("")

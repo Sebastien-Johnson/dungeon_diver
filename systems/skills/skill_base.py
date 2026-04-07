@@ -1,5 +1,5 @@
 import random, time, sys
-from systems.units.units import Monster, Player
+from systems.units.units_base import Monster, Player
 
 
 class Skills():
@@ -82,7 +82,7 @@ class PhysSkills(Skills):
 
     def phys_attack(self, caster, target, cost, base_pow, accuracy):
         if self.check_stamina(caster, cost):
-            if self.check_accuracy(accuracy):
+            if self.check_accuracy(accuracy-target.base_stats.agility):
                 hp1 = target.base_stats.current_health
                 target.take_phys_damage(self.calc_phys_power(caster, base_pow))
                 hp2 = hp1 - target.base_stats.current_health
@@ -107,7 +107,7 @@ class MagSkills(Skills):
     
     def mag_attack(self, caster, target, cost, base_pow, accuracy):
         if self.check_mana(caster, cost):
-            if self.check_accuracy(accuracy):
+            if self.check_accuracy(accuracy-target.base_stats.agility):
                 hp1 = target.base_stats.current_health
                 target.take_mag_damage(self.calc_mag_power(caster, base_pow))
                 hp2 = hp1 - target.base_stats.current_health
@@ -118,7 +118,7 @@ class MagSkills(Skills):
     
     def mag_heal(self, caster, target, cost, base_pow, accuracy):
         if self.check_mana(caster, cost):
-            if self.check_accuracy(accuracy):
+            if self.check_accuracy(accuracy-target.base_stats.agility):
                 hp1 = target.base_stats.current_health
                 target.restore_health(self.calc_mag_power)
                 hp2 = hp1 - target.base_stats.current_health

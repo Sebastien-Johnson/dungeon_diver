@@ -31,7 +31,7 @@ class Combat():
         self.type_text("Choose a skill (number) to use this turn.")
         self.type_text(f"Skills available:")
         for key, value in player.skills.skill_list.items():
-            self.type_text(f"{key}. {value}")   
+            self.type_text(f"{key}. {value} ")   
         player_choice = input().lower()
         propper_choice = False
 

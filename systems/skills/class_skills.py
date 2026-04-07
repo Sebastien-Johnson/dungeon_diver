@@ -14,7 +14,7 @@ class WarriorSkills(PhysSkills):
         self.phys_player_status(caster, target)
 
     def vert_chop(self, caster, target, cost=8, base_pow=3, accuracy=85):
-        self.type_text(f"{caster.name} sends a rising flash of steel through {target.name}!")
+        self.type_text(f"{caster.name} sends a rising flash of steel through the {target.name}!")
         time.sleep(.5)
         self.phys_attack(caster, target, cost, base_pow, accuracy)
         time.sleep(.5)
@@ -24,7 +24,7 @@ class RangerSkills(PhysSkills):
     def __init__(self):
         super().__init__()
 
-        self.skill_list = ["arrow_shot"]
+        self.skill_list = {"1" : "arrow_shot"}
 
     def arrow_shot(self, caster, target, cost=2, base_pow=2, accuracy=100):
         self.type_text(f"{caster.name} fires an arrow at the {target.name}!")
@@ -38,9 +38,9 @@ class MageSkills(MagSkills):
     def __init__(self):
         super().__init__()
 
-        self.skill_list = ["mag_missile", "fireball"]
+        self.skill_list = {"1" : "mag_missile", "2": "fireball"}
 
-    def mag_missile(self, caster, target, cost=8, base_pow=4, accuracy=95):
+    def mag_missile(self, caster, target, cost=5, base_pow=3, accuracy=100):
         self.type_text(f"{caster.name} cast a barrage of magical projectiles at the {target.name}!")
         time.sleep(.5)
         self.mag_attack(caster, target, cost, base_pow, accuracy)
@@ -60,7 +60,7 @@ class ClericSkills(MagSkills):
     def __init__(self):
         super().__init__()
 
-        self.skill_list = ["minor_heal", "smite"]
+        self.skill_list = {"1" : "minor_heal", "2" : "smite"}
         
     def minor_heal(self, caster, target, cost=8, base_pow=4, accuracy=100):
         self.type_text(f"{caster.name} mends {caster.name}'s small wounds with holy light!")
@@ -69,7 +69,7 @@ class ClericSkills(MagSkills):
         time.sleep(.5)
         self.mag_player_status(caster, target)
 
-    def smite(self, caster, target, cost=8, base_pow=4, accuracy=100):
+    def smite(self, caster, target, cost=6, base_pow=4, accuracy=100):
         self.type_text(f"{caster.name} imbues their weapon with holy light and strikes at the {target.name}!")
         time.sleep(.5)
         self.mag_attack(caster, target, cost, base_pow, accuracy)

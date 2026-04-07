@@ -1,6 +1,12 @@
 from loot.item_libs.armors import *
 from loot.item_libs.weapons import *
 from loot.make_loot import LootMaker
+from systems.units.units_base import Monster, Player
+from systems.units.monster_races import *
+from systems.units.player_races import *
+from systems.units.classes import *
+from dungeon.dgn_gen import Dungeon
+
 
 def test_armors():
     armor1 = HeavyHead("busted bronze")
@@ -22,5 +28,14 @@ def test_weapons():
     else:
         print(False)
 
+def loot_drop():
+    monster_race = "Slime"
+    monster = Monster(monster_race)
+    monster.add_loot_equipment(1)
+    player = Player("seb", Human(), Warrior(), 1)
+    dungeon = Dungeon(player)
+    while True:
+        dungeon.start_combat(player, monster)
+        
 
-test_weapons()
+loot_drop()
