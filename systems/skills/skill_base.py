@@ -43,6 +43,7 @@ class Skills():
                     time.sleep(1)
                     self.type_text(f"{caster.name} gained {target.xp_val} experience points!\n")
                     caster.leveling.add_xp(caster, target.xp_val) 
+                    
             if type(target) == Player:
                 sys.exit("You died...")
 

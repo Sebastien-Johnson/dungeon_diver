@@ -14,18 +14,14 @@ class Dungeon():
     def generate_dungeon(self):
         self.curr_dng_lvl += 1
         #allow for potions between levels
-        if self.curr_dng_lvl%10 == 0:
-            pass
-            #check if current lvl is rest area
-        else:
-            while self.player.total_stats.current_health > 0:
-                monster = self.generate_monster(self.curr_dng_lvl)
-                self.type_text(f"You descend to floor {self.curr_dng_lvl} of the dungeon...")
-                time.sleep(1)
-                self.type_text(f"A {monster.name} approaches!!\n")
-                time.sleep(1)
-                self.start_combat(self.player, monster)
-                self.curr_dng_lvl += 1
+        while self.player.total_stats.current_health > 0:
+            monster = self.generate_monster(self.curr_dng_lvl)
+            self.type_text(f"You descend to floor {self.curr_dng_lvl} of the dungeon...")
+            time.sleep(1)
+            self.type_text(f"A {monster.name} approaches!!\n")
+            time.sleep(1)
+            self.start_combat(self.player, monster)
+            self.curr_dng_lvl += 1
         
 
     def generate_monster(self, curr_dng_lvl):
@@ -83,6 +79,7 @@ class Dungeon():
             dng_lvl_combat.combat_instance(player, monster)
         self.type_text(f"Floor {self.curr_dng_lvl} complete!")
         monster.inventory.loot_body(player)
+        #here?
         self.cont(player)
         print("==============================================")
 

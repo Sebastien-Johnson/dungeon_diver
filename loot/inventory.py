@@ -9,20 +9,8 @@ class UnitInventory():
         self.legs = []
         self.arms = []
         self.weapons = []
-        self.armor = []
-        if self.head:
-            self.armor.append(self.head[0])
-        if self.chest:
-            self.armor.append(self.chest[0])
-        if self.arms:
-            self.armor.append(self.arms[0])
-        if self.legs:
-            self.armor.append(self.legs[0])
+        self.armors = []
         self.equipped = []
-        for a in self.armor:
-            self.equipped.append(a)
-        for w in self.weapons:
-            self.equipped.append(w)
 
     def add_to_bag(self, item):
         self.bag.append(item)
@@ -34,44 +22,69 @@ class UnitInventory():
         self.bag.remove(item)
     
     def equip_item(self, item, player):
-        if item == type(Equipment):
-            self.equip_armor(item, player)
-        elif item == type(Weapon):
-            self.equip_weapon(item, player)
+        print("suiting up")
+        if isinstance(item, Weapon):
+            print("adding weapon")
+            self.check_hands(player, item)
+        elif isinstance(item, Equipment):
+            print("adding armor")
+            self.equip_armor(player, item)
 
-    def equip_armor(self, new_armor, player):
-        for armor in self.armor:
-            if new_armor.item_type == armor.item_type:
-                player.stats.remove_stats(armor)
-                player.stats.add_stats(new_armor)
-                self.inventory.add_to_bag(armor)
-                match new_armor.item_type:
-                    case "head":
-                        self.head = new_armor
-                    case "chest":
-                        self.chest = new_armor
-                    case "arms":
-                        self.arms = new_armor
-                    case "legs":
-                        self.legs = new_armor
-            return
+    def equip_armor(self, player, new_armor):
+        if self.armors:
+            print("iterating armors")
+            for armor in self.armors:
+                if new_armor.item_type == armor.item_type:
+                    player.total_stats.remove_stats(armor.stats)
+                    player.total_stats.add_stats(new_armor.stats)
+                    self.armors.remove(armor)
+                    self.equipped.remove(armor)
+                    self.add_to_bag(armor)  
+                    match new_armor.item_type:
+                        case "head":
+                            self.head = new_armor
+                        case "chest":
+                            self.chest = new_armor
+                        case "arms":
+                            self.arms = new_armor
+                        case "legs":
+                            self.legs = new_armor
+                        case _:
+                            print("No matches")
         else:
-            print("Can't wear that there!")
+             print("armors empty")
+             print(new_armor.item_type)
+             print(new_armor.stats)
+             player.total_stats.add_stats(new_armor.stats)
+             self.armors.append(armor)
+             self.equipped.append(armor)
+             match new_armor.item_type:
+                case "head":
+                    self.head = new_armor
+                case "chest":
+                    self.chest = new_armor
+                case "arms":
+                    self.arms = new_armor
+                case "legs":
+                    self.legs = new_armor
+        print("Can't wear that there!")
 
-    def equip_weapon(self, new_weapon, player):
+    def equip_weapon(self, player, new_weapon):
         self.weapons.append(new_weapon)
-        player.stats.add_stats(new_weapon)
+        self.equipped.append(new_weapon)
+        player.total_stats.add_stats(new_weapon.stats)
 
     def unequip_weapon(self, player, current_weapon):
         self.weapons.remove(current_weapon)
         self.add_to_bag(current_weapon)
-        player.stats.remove_stats(current_weapon)
+        player.total_stats.remove_stats(current_weapon.stats)
 
         
     def check_hands(self, player, new_weapon):
         wpn_count = len(self.weapons)
 
         if wpn_count == 0:
+            print("hands free, weapon equiped")
             self.equip_weapon(player, new_weapon)
             return
         
@@ -100,8 +113,13 @@ class UnitInventory():
             for w in self.weapons:
                 self.unequip_weapon(player, w)
             self.equip_weapon(player, new_weapon)
+            return
+        print("did not equip weapon")
 
     def loot_body(self, player):
+        print(self.armors)
+        print(self.weapons)
+        print(self.equipped)
         for i in self.equipped:
             self.type_text(f"They dropped a {i.name}!!")
             self.type_text("Take it? (y/n)")

@@ -100,7 +100,10 @@ class Monster(Unit):
         super().__init__(race, unit_class, lvl)
         self.name = race.name
         self.xp_val = race.xp_val
-        self.base_stats = race.base_stats
+        self.initial_stats = race.base_stats
+        self.base_stats = self.initial_stats #lvl 1 stats
+        self.total_stats = self.base_stats #scaled stats
+        #self.total_stats.add_stats(unit_class.stat_bonuses)
         self.skills = race.skills
         self.unit_class = unit_class
         if self.unit_class:

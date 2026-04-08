@@ -59,12 +59,21 @@ Roadmap
 
 
 Notes
-- Seperate initial stats, base stats and bonus stats (base+equipment)
-- print item stats when asking to equip
-  - print stat differences once equiped
+- ~~Seperate initial stats, base stats and bonus stats (base+equipment)~~
+- item stats not printing before and after
+ ~~ - print stat differences once equiped~~
+- item generation
+  - Change equip item to check if weapon then item (change class structure for weapons?)
+  - skill_base.check if slain
+  - dgn_gen, generate monster, add loot equipment
+  - dgn_gen, start_combat
+  - combat instance loop
+  - unit base, monster, add loot equipment
+- player lvl showing as 0 in lvl up display
 - update die function to allow restart before sys exit
 - add immediate leveling function to monster creation
 - add xp val lvl multiplier
+- using pickle for save states?
  -'score' by XP obtained or dungeon lvl reached
   -Bonus for no damage instances
  -initiation and termination

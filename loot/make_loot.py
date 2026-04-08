@@ -31,9 +31,9 @@ class LootMaker():
     def generate_loot(self, curr_dng_lvl):
         weapon_or_armor = random.choice([True, False])
         if weapon_or_armor:
-            return [self.generate_weapon(curr_dng_lvl), "weapon"]
+            return self.generate_weapon(curr_dng_lvl)
         else:
-            return [self.generate_armor(curr_dng_lvl), "armor"]
+            return self.generate_armor(curr_dng_lvl)
 
     def generate_weapon(self, curr_dng_lvl): 
         weapon_type = random.choice(self.all_weapons)
@@ -43,6 +43,7 @@ class LootMaker():
             return 
         else:
             quality = quality_lvl[material]
+        print("has weapon")
         return self.forge_weapon(weapon_type, quality)
         
         
@@ -84,6 +85,7 @@ class LootMaker():
             return
         else:
             quality = quality_lvl[material]
+        print("has armor")
         return self.forge_armor(armor_type, material, quality)
 
     def forge_armor(self, armor_type, material, quality):
@@ -122,7 +124,7 @@ class LootMaker():
 
     def drop_rate(self, curr_dng_lvl):
         rate = random.randrange(100)
-        low_rate = 60 - (curr_dng_lvl*.5)
+        low_rate = 100 - (curr_dng_lvl*.5)
         med_rate = 10 + (curr_dng_lvl*.75)
         high_rate = curr_dng_lvl *.1
         if rate <= high_rate:
