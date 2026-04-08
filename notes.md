@@ -64,7 +64,7 @@ Notes
   - print stat differences once equiped
 - update die function to allow restart before sys exit
 - add immediate leveling function to monster creation
-
+- add xp val lvl multiplier
  -'score' by XP obtained or dungeon lvl reached
   -Bonus for no damage instances
  -initiation and termination

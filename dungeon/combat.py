@@ -33,6 +33,7 @@ class Combat():
         for key, value in player.skills.skill_list.items():
             self.type_text(f"{key}. {value} ")   
         player_choice = input().lower()
+        self.type_text("")
         propper_choice = False
 
         while propper_choice == False:

@@ -77,11 +77,12 @@ class Player(Unit):
     def __init__(self, name, race, unit_class, lvl=1):
         super().__init__(name, race, unit_class, lvl)
         self.name = name
-        self.lvl = lvl
-        self.current_xp = int()
+        self.current_xp = self.leveling.xp_bar.current_xp
         self.xp_to_lvl = int()
         self.initial_stats = unit_class.stats #static lvl 1 stats
-        self.base_stats = self.initial_stats.add_stats(race.stat_bonuses) #scaling stats with flat racial & equipment bonuses
+        self.base_stats = self.initial_stats #scaling stats with flat racial & equipment bonuses
+        self.total_stats = self.base_stats #add equipment & race bonuses
+        self.total_stats.add_stats(race.stat_bonuses)
         self.skills = unit_class.skills
 
     def take_phys_damage(self, damage): 
@@ -91,6 +92,7 @@ class Player(Unit):
     def take_mag_damage(self, damage):
         effective_dmg = damage - self.base_stats.mag_armor
         self.base_stats.current_health -= effective_dmg
+
         
 
 class Monster(Unit):
@@ -118,5 +120,3 @@ class Monster(Unit):
         dungeon_spoils = LootMaker()
         loot = dungeon_spoils.generate_loot(curr_dng_lvl)
         self.inventory.equip_item(loot, self)
-        
-

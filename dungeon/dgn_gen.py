@@ -18,7 +18,7 @@ class Dungeon():
             pass
             #check if current lvl is rest area
         else:
-            while self.player.base_stats.current_health > 0:
+            while self.player.total_stats.current_health > 0:
                 monster = self.generate_monster(self.curr_dng_lvl)
                 self.type_text(f"You descend to floor {self.curr_dng_lvl} of the dungeon...")
                 time.sleep(1)

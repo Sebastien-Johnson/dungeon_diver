@@ -45,7 +45,7 @@ class Game():
         while known_race == False:
             if player_race.lower() in valid_races:
                 known_race = True
-                return player_race
+                return player_race.lower()
             else:
                 self.type_text(f"Sorry, '{player_race}' is not a known race. Try again.")
                 player_race = input()

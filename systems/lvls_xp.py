@@ -15,16 +15,19 @@ class Leveling():
         self.xp_bar.current_xp += new_xp
         if self.xp_bar.current_xp >= self.xp_bar.xp_to_lvl:
             old_stats = player.base_stats
-            self.lvl_up()
-            player.base_stats.show_stat_update(old_stats)
+            self.lvl_up(player, new_xp)
+            
 
-    def lvl_up(self):
+    def lvl_up(self, player, extra_xp):
+        old_stats = player.base_stats
         extra_xp = self.xp_bar.current_xp - self.xp_bar.xp_to_lvl
         self.xp_bar = ExpBar(self.xp_to_next(self.current_lvl))
-        self.current_lvl += 1
-        self.add_xp(extra_xp)
+        player.current_lvl += 1
+        self.add_xp(player, extra_xp)
         self.type_text("Level up!!")
         self.type_text(f"Level: {self.current_lvl-1} -> {self.current_lvl}\n")
+        player.base_stats.lvl_up_once(player.initial_stats, self.current_lvl)
+        player.base_stats.show_stat_update(old_stats)
         
 
     def xp_to_next(self, current_lvl):
