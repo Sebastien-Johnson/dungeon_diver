@@ -1,4 +1,5 @@
 import time
+from .stats import Stats
 
 class ExpBar():
     def __init__(self, xp_to_lvl):
@@ -14,8 +15,8 @@ class Leveling():
     def add_xp(self, player, new_xp):
         self.xp_bar.current_xp += new_xp
         if self.xp_bar.current_xp >= self.xp_bar.xp_to_lvl:
-            old_stats = player.base_stats
-            self.lvl_up(player, new_xp)
+            
+            self.lvl_up(player, new_xp) 
             
 
     def lvl_up(self, player, extra_xp):
@@ -25,7 +26,7 @@ class Leveling():
         player.current_lvl += 1
         self.add_xp(player, extra_xp)
         self.type_text("Level up!!")
-        self.type_text(f"Level: {self.current_lvl-1} -> {self.current_lvl}\n")
+        self.type_text(f"Level: {player.current_lvl-1} -> {player.current_lvl}\n")
         player.base_stats.lvl_up_once(player.initial_stats, self.current_lvl)
         player.base_stats.show_stat_update(old_stats)
         

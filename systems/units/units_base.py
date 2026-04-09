@@ -3,7 +3,7 @@ from ..lvls_xp import Leveling
 from loot.make_loot import LootMaker
 import time
 import math
-
+from ..stats import Stats
 
 class Unit():
     def __init__(self,  name, race, unit_class, lvl=1):
@@ -80,9 +80,9 @@ class Player(Unit):
         self.current_xp = self.leveling.xp_bar.current_xp
         self.xp_to_lvl = int()
         self.initial_stats = unit_class.stats #static lvl 1 stats
-        self.base_stats = self.initial_stats #scaling stats with flat racial & equipment bonuses
-        self.total_stats = self.base_stats #add equipment & race bonuses
-        self.total_stats.add_stats(race.stat_bonuses)
+        self.base_stats = Stats()
+        self.base_stats.add_stats(self.initial_stats)
+        self.base_stats.add_stats(self.race.stat_bonuses) #scaling stats with flat racial & equipment bonuses
         self.skills = unit_class.skills
 
     def take_phys_damage(self, damage): 
@@ -102,8 +102,6 @@ class Monster(Unit):
         self.xp_val = race.xp_val
         self.initial_stats = race.base_stats
         self.base_stats = self.initial_stats #lvl 1 stats
-        self.total_stats = self.base_stats #scaled stats
-        #self.total_stats.add_stats(unit_class.stat_bonuses)
         self.skills = race.skills
         self.unit_class = unit_class
         if self.unit_class:
@@ -122,4 +120,4 @@ class Monster(Unit):
     def add_loot_equipment(self, curr_dng_lvl):
         dungeon_spoils = LootMaker()
         loot = dungeon_spoils.generate_loot(curr_dng_lvl)
-        self.inventory.equip_item(loot, self)
+        self.inventory.equip_item(loot, self) 

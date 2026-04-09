@@ -50,7 +50,6 @@ Roadmap
     ~~-create lvl locks on skills (initial if statement in each method that checks caster lvl)~~
   ~~-dmg calc~~
   -Add "return specs" method for skills for players to see
--update class bonuses to be multipliers instead of flat numbers
 ~~-xp scaling~~
 -stat scaling
 ~~-item library~~
@@ -63,7 +62,7 @@ Notes
 - item stats not printing before and after
  ~~ - print stat differences once equiped~~
 - item generation
-  - Change equip item to check if weapon then item (change class structure for weapons?)
+  ~~- Change equip item to check if weapon then item (change class structure for weapons?)~~
   - skill_base.check if slain
   - dgn_gen, generate monster, add loot equipment
   - dgn_gen, start_combat

@@ -36,7 +36,7 @@ class Skills():
         return base_pow + caster.base_stats.mag_pow
     
     def check_if_slain(self, caster, target):
-        if target.base_stats.current_health <= 0:
+        if target.base_stats.current_health <= 0: 
             time.sleep(1)
             if type(target) == Monster:
                     self.type_text(f"The {target.name} has been slain!")
