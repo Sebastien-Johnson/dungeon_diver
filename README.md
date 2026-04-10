@@ -1,2 +1,2 @@
 # dungeon_diver
-CLI dungeon dive adventure game
+CLI dungeon diver, roguelike adventure game
