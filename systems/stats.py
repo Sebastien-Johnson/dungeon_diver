@@ -13,15 +13,11 @@ class Stats():
         self.max_stamina = max_stamina
         self.current_stamina = max_stamina
         self.phys_pow = phys_pow 
-        self.all_stats = {"HP" : self.max_health,
-                          "Physical Armor" : self.phys_armor, 
-                          "Magic Armor" : self.mag_armor, 
-                           "Agility" : self.agility, 
-                           "Mana" : self.max_mana, 
-                           "Magic Power" : self.mag_pow, 
-                           "Stamina" : self.max_stamina, 
-                           "Physical Power" : self.phys_pow}
-
+        
+    
+    def __dir__(self, name):
+        return getattr(self, name)
+    
     def add_stats(self, new_stats):
         self.max_health += new_stats.max_health
         self.current_health += new_stats.max_health
@@ -49,33 +45,54 @@ class Stats():
         self.phys_pow -= old_stats.phys_pow
 
     def show_stat_update(self, old_stats):
-        for key, value in old_stats.all_stats.items():
-            self.type_text(f"{key}: {value} -> {self.all_stats[key]}", .02)
+        self.type_text("Stats:", .02)
+        attr_names = ["max_health", "phys_armor","mag_armor", "agility", "max_mana", "mag_pow", "max_stamina", "phys_pow"]
+        for name in attr_names:
+            self.type_text(f"{name}: {old_stats.__dir__(name)} -> {self.__dir__(name)}", .02)
         self.type_text("", .02)
 
     def lvl_up_once(self, initial_stats, unit_level):
-        for key, value in initial_stats.all_stats.items():
-            match value:
+        stat_names = ["max_health", "current_health", "phys_armor","mag_armor", "agility", "max_mana", "current_mana", "mag_pow", "max_stamina", "current_stamina", "phys_pow"]
+
+        for name in stat_names:
+            match initial_stats.__dir__(name):
                 case 1:
                     if unit_level%5 == 0:
-                        self.all_stats[key] +=1
+                        setattr(self, name, self.__dir__(name) + 1)
+                        continue
                 case 2:
                     if unit_level%4 == 0:
-                        self.all_stats[key]  +=1
+                        setattr(self, name, self.__dir__(name) + 1)
+                        continue
                 case 3:
                     if unit_level%3 == 0:
-                        self.all_stats[key]  +=1
-                case 4:
+                        setattr(self, name, self.__dir__(name) + 1)
+                        continue
+                case 4:                   
                     if unit_level%2 == 0:
-                        self.all_stats[key]  +=1
+                        setattr(self, name, self.__dir__(name) + 1)
+                        continue
                 case 5:
                     if unit_level%1 == 0:
-                        self.all_stats[key]  += 1
-            match key:
-                case "Mana":
-                    self.all_stats[key] += 3
-                case "Stamina":
-                    self.all_stats[key] += 3
+                        setattr(self, name, self.__dir__(name) + 1)
+                        continue
+            match name:
+                case "current_mana":
+                    if initial_stats.current_mana > 0:
+                        setattr(self, name, self.__dir__(name) + 3)
+                    continue
+                case "max_mana":
+                    if initial_stats.max_mana > 0:
+                        setattr(self, name, self.__dir__(name) + 3)  
+                    continue
+                case "max_stamina":
+                    if initial_stats.max_stamina > 0:
+                        setattr(self, name, self.__dir__(name) + 3)
+                    continue
+                case "current_Stamina":
+                    if initial_stats.current_stamina > 0:
+                        setattr(self, name, self.__dir__(name) + 3)
+                    continue
 
     def lvl_up_to_lvl(self, unit_level):
         for l in range(unit_level+1):
@@ -91,5 +108,3 @@ class Stats():
             print(f"{t}", end="", flush=True)
             time.sleep(speed)
         print("")
-        
-    

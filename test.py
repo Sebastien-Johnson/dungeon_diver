@@ -38,4 +38,3 @@ def loot_drop():
         dungeon.start_combat(player, monster)
         
 
-loot_drop()

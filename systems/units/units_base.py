@@ -3,6 +3,7 @@ from ..lvls_xp import Leveling
 from loot.make_loot import LootMaker
 import time
 import math
+import copy
 from ..stats import Stats
 
 class Unit():
