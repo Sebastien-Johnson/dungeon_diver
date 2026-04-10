@@ -1,5 +1,7 @@
 from .items_base import *
+from .item_libs.weapons import *
 import time
+
 
 class UnitInventory():
     def __init__(self):
@@ -23,11 +25,11 @@ class UnitInventory():
         self.bag.remove(item)
         self.type_text(f"{item.name} has been cast aside like a cart in the parking lot...")
     
-    def equip_item(self, item, player):
+    def equip_item(self, item, unit):
         if isinstance(item, Weapon):
-            self.check_hands(player, item)
+            self.check_hands(unit, item)
         elif isinstance(item, Equipment):
-            self.equip_armor(player, item)
+            self.equip_armor(unit, item)
 
     def equip_armor(self, player, new_armor):
         if self.armors:
@@ -69,16 +71,17 @@ class UnitInventory():
                 case _:
                     self.type_text("Doesn't fit anywhere..")
 
-    def equip_weapon(self, player, new_weapon):
+    def equip_weapon(self, unit, new_weapon):
         self.weapons.append(new_weapon)
         self.equipped.append(new_weapon)
-        player.base_stats.add_stats(new_weapon.stats)
+        unit.base_stats.add_stats(new_weapon.stats)
         
 
-    def unequip_weapon(self, player, current_weapon):
+    def unequip_weapon(self, unit, current_weapon):
         self.weapons.remove(current_weapon)
         self.add_to_bag(current_weapon)
-        player.base_stats.remove_stats(current_weapon.stats)
+        unit.base_stats.remove_stats(current_weapon.stats)
+        self.type_text(f"{current_weapon.name} moved to bag.")
 
         
     def check_hands(self, player, new_weapon):
@@ -105,7 +108,7 @@ class UnitInventory():
                     if x in ["yes", "y"]:
                         self.unequip_weapon(player, w)
                         self.equip_weapon(player, new_weapon)
-                        break
+                        continue
                 return
                 
 
@@ -118,10 +121,13 @@ class UnitInventory():
     def loot_body(self, player):
         for i in self.equipped:
             self.type_text(f"They dropped a {i.name}!!")
+            i.stats.show_item_stats()
             self.type_text("Take it? (y/n)")
             take = input()
-            while True:
+            looting = True
+            while looting:
                 if take in ["yes", "y"]:
+                    self.equipped.remove(i)     
                     self.type_text("Bag or equip? (1/2)")
                     bag_equip = input()
                     while True:
@@ -134,11 +140,14 @@ class UnitInventory():
                         else:
                             self.type_text("Unclear answer, try again")
                             bag_equip = input()
+                            continue
+                    break
                 elif take in ["no", "n"]:
                     self.type_text("Oh well, your loss.")
                     break
                 else:
                     self.type_text("Unclear answer, try again.")
+                    take = input()
                 
     
     def type_text(self, text_string):
@@ -146,3 +155,4 @@ class UnitInventory():
             print(f"{t}", end="", flush=True)
             time.sleep(.04)
         print("")
+

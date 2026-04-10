@@ -89,7 +89,7 @@ class Stats():
                     if initial_stats.max_stamina > 0:
                         setattr(self, name, self.__dir__(name) + 3)
                     continue
-                case "current_Stamina":
+                case "current_stamina":
                     if initial_stats.current_stamina > 0:
                         setattr(self, name, self.__dir__(name) + 3)
                     continue
@@ -97,6 +97,14 @@ class Stats():
     def lvl_up_to_lvl(self, unit_level):
         for l in range(unit_level+1):
             self.lvl_up_once(l)
+
+    def show_item_stats(self):
+        attr_names = ["max_health", "phys_armor","mag_armor", "agility", "max_mana", "mag_pow", "max_stamina", "phys_pow"]
+        for name in attr_names:
+            if self.__dir__(name) > 0:
+                self.type_text(f"{name}: +{self.__dir__(name)}", .02)
+            elif self.__dir__(name) < 0:
+                self.type_text(f"{name}: {self.__dir__(name)}", .02)
 
     def take_potion(self, potion):
         self.current_health += potion.health

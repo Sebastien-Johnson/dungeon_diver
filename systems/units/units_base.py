@@ -3,7 +3,6 @@ from ..lvls_xp import Leveling
 from loot.make_loot import LootMaker
 import time
 import math
-import copy
 from ..stats import Stats
 
 class Unit():
@@ -58,7 +57,8 @@ class Unit():
             self.restore_mana(restore)
             self.type_text(f"Mana: {initial_mana} -> {self.base_stats.current_mana}")
         if self.base_stats.max_stamina > 0:
-            initial_stamina = self.base_stats.current_stamina
+            initial_stamina = 0
+            initial_stamina += self.base_stats.current_stamina
             self.restore_stam(restore)
             self.type_text(f"Stamina: {initial_stamina} -> {self.base_stats.current_stamina}")
 

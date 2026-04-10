@@ -38,3 +38,8 @@ def loot_drop():
         dungeon.start_combat(player, monster)
         
 
+sword = Sword("busted bronze")
+monster = Monster(Goblin())
+player = Player("Seb", Human(), Warrior())
+monster.inventory.equip_item(sword, player)
+monster.inventory.loot_body(player)

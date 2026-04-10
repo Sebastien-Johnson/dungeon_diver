@@ -58,6 +58,8 @@ Roadmap
 
 
 Notes
+~~- Bag function not ending~~
+~~- short rest print function not printing propper info~~
 - ~~Seperate initial stats, base stats and bonus stats (base+equipment)~~
 - item stats not printing before and after
  ~~ - print stat differences once equiped~~
@@ -68,11 +70,12 @@ Notes
   - dgn_gen, start_combat
   - combat instance loop
   - unit base, monster, add loot equipment
-- player lvl showing as 0 in lvl up display
+~~- player lvl showing as 0 in lvl up display~~
 - update die function to allow restart before sys exit
 - add immediate leveling function to monster creation
 - add xp val lvl multiplier
 - using pickle for save states?
+- Slime heal not functioning properly
  -'score' by XP obtained or dungeon lvl reached
   -Bonus for no damage instances
  -initiation and termination
