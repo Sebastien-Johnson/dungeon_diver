@@ -1,8 +1,8 @@
+import time
+import math
 from loot.inventory import UnitInventory
 from ..lvls_xp import Leveling
 from loot.make_loot import LootMaker
-import time
-import math
 from ..stats import Stats
 
 class Unit():
@@ -43,7 +43,7 @@ class Unit():
     def restore_health(self, recovery):
         recovered_health = recovery + self.base_stats.current_health
         if recovered_health >= self.base_stats.max_health:
-            self.base_stats.current_health = self.base_stats.max_health
+            self.base_stats.current_health = self.base_stats.max_health 
         else:
             self.base_stats.current_health = recovered_health
 
@@ -87,11 +87,11 @@ class Player(Unit):
         self.skills = unit_class.skills
 
     def take_phys_damage(self, damage): 
-        effective_dmg = damage - self.base_stats.phys_armor
+        effective_dmg = max((damage - self.base_stats.phys_armor), 0)
         self.base_stats.current_health -= effective_dmg
 
     def take_mag_damage(self, damage):
-        effective_dmg = damage - self.base_stats.mag_armor
+        effective_dmg = max((damage - self.base_stats.mag_armor), 0)
         self.base_stats.current_health -= effective_dmg
 
         
@@ -106,16 +106,16 @@ class Monster(Unit):
         self.skills = race.skills
         self.unit_class = unit_class
         if self.unit_class:
-            self.base_stats.add_stats(unit_class.base_stats)
-            self.name = unit_class.name + " " + race.name
+            self.base_stats.add_stats(unit_class.bonus_stats)
+            self.name = unit_class.name.capitalize() + " " + race.name
 
     def take_phys_damage(self, damage):
-        effective_dmg = damage - self.base_stats.phys_armor
+        effective_dmg = max((damage - self.base_stats.phys_armor), 0)
         self.base_stats.current_health -= effective_dmg
         
 
     def take_mag_damage(self, damage):
-        effective_dmg = damage - self.base_stats.mag_armor
+        effective_dmg = max((damage - self.base_stats.mag_armor), 0)
         self.base_stats.current_health -= effective_dmg
 
     def add_loot_equipment(self, curr_dng_lvl):

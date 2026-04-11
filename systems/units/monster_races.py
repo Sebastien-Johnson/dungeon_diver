@@ -14,7 +14,7 @@ class Slime(MonsterRace):
     def __init__(self):
         super().__init__()
         self.name = "Slime"
-        self.base_stats = Stats(5, 0, 0, 1, 0, 0, 20, 2)
+        self.base_stats = Stats(2, 0, 0, 1, 0, 0, 20, 2)
         self.skills = SlimeSkills()
         self.xp_val = 100
 
@@ -25,7 +25,7 @@ class Bat(MonsterRace):
     def __init__(self):
         super().__init__()
         self.name = "Bat"
-        self.base_stats = Stats(5, 0, 0, 1, 0, 0, 20, 5)
+        self.base_stats = Stats(2, 0, 0, 1, 0, 0, 20, 5)
         self.skills = BatSkills()
         self.xp_val = 100
 
@@ -36,7 +36,7 @@ class Goblin(MonsterRace):
     def __init__(self):
         super().__init__()
         self.name = "Goblin"
-        self.base_stats = Stats(5, 0, 0, 1, 0, 0, 20, 5)
+        self.base_stats = Stats(2, 0, 0, 1, 0, 0, 20, 5)
         self.skills = GoblinSkills()
         self.xp_val = 100
 

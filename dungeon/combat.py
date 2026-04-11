@@ -1,4 +1,3 @@
-#combat system
 import random, time
 
 class Combat():
@@ -45,7 +44,6 @@ class Combat():
                 self.type_text(f"Sorry, '{player_choice}' is not a skill you know. Try again.")
                 player_choice = input().lower()
        
-        
 
     def choose_monster_skill(self, monster, player):
         monster_choice = random.choice(monster.skills.skill_list)

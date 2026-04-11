@@ -1,6 +1,6 @@
+import time
 from .items_base import *
 from .item_libs.weapons import *
-import time
 
 
 class UnitInventory():

@@ -1,6 +1,5 @@
 import time
 from .stats import Stats
-import copy
 
 class ExpBar():
     def __init__(self, xp_to_lvl):

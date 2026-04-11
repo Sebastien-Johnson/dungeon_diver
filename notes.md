@@ -61,15 +61,10 @@ Notes
 ~~- Bag function not ending~~
 ~~- short rest print function not printing propper info~~
 - ~~Seperate initial stats, base stats and bonus stats (base+equipment)~~
-- item stats not printing before and after
+-~~ item stats not printing before and after~~
  ~~ - print stat differences once equiped~~
 - item generation
   ~~- Change equip item to check if weapon then item (change class structure for weapons?)~~
-  - skill_base.check if slain
-  - dgn_gen, generate monster, add loot equipment
-  - dgn_gen, start_combat
-  - combat instance loop
-  - unit base, monster, add loot equipment
 ~~- player lvl showing as 0 in lvl up display~~
 - update die function to allow restart before sys exit
 - add immediate leveling function to monster creation
@@ -135,3 +130,9 @@ Outline
  -magic resistance
  -physical resistance
   -flat resistance model: 1 resistance = -1 damage
+
+Reflection
+  - Stricter testing
+  - Cleaner sorting of functions
+  - More time spent building and maintaining an outline
+  - Updated issue log

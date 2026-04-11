@@ -1,8 +1,9 @@
+import time, sys
 from systems.units.units_base import *
 from systems.units.classes import *
 from systems.units.player_races import *
 from .dgn_gen import *
-import time
+
 
 class Game():
     def __init__(self):
@@ -98,3 +99,18 @@ class Game():
     def start_dungeon(self, player):
         new_dungeon = Dungeon(player)
         new_dungeon.generate_dungeon()
+        self.check_if_replay()
+    
+    def check_if_replay(self):
+        self.type_text("Feed the dungeon again? (y/n)")
+        answer = input()
+        while True:
+            if answer in ["yes", "y"]:
+                break
+            elif answer in ["no", "n"]:
+                sys.exit(self.type_text("This is why no one will remember you name.."))
+            else:
+                self.type_text("Your corpse is too quiet, try again.")
+                answer = input()
+        new_game = Game()
+        new_game.game_start()

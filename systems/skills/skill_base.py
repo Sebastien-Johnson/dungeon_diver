@@ -1,7 +1,6 @@
 import random, time, sys
 from systems.units.units_base import Monster, Player
 
-
 class Skills():
     def __init__(self):
         self.description = "" 

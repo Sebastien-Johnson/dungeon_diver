@@ -1,5 +1,6 @@
-from .skill_base import PhysSkills, MagSkills
 import time
+from .skill_base import PhysSkills, MagSkills
+
 class WarriorSkills(PhysSkills):
     def __init__(self):
         super().__init__()
@@ -14,7 +15,7 @@ class WarriorSkills(PhysSkills):
         self.phys_player_status(caster, target)
 
     def vert_chop(self, caster, target, cost=8, base_pow=3, accuracy=85):
-        self.type_text(f"{caster.name} sends a rising flash of steel through at {target.name}!")
+        self.type_text(f"{caster.name} sends a rending flash at {target.name}!")
         time.sleep(.5)
         self.phys_attack(caster, target, cost, base_pow, accuracy)
         time.sleep(.5)

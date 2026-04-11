@@ -1,6 +1,7 @@
+import random
 from .item_libs.weapons import *
 from .item_libs.armors import *
-import random
+
 
 class LootMaker():
     def __init__(self):
@@ -117,7 +118,6 @@ class LootMaker():
                         return LightArms(quality)
                     case "legs":
                         return LightLegs(quality)
-        
                 
 
     def drop_rate(self, curr_dng_lvl):

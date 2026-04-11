@@ -35,20 +35,20 @@ class Cleric(UnitClass):
         self.stats = Stats(5, 2, 2, 2, 0, 0, 30, 3)
         self.skills = ClericSkills()
 
-class Low(UnitClass):
+class Lesser(UnitClass):
     def __init__(self):
         super().__init__()
-        self.classname = "low"
-        self.stats = Stats(1, 1, 1, 1, 30, 1, 30, 1)
+        self.name = "low"
+        self.bonus_stats = Stats(1, 1, 1, 1, 10, 1, 10, 1)
 
 class Greater(UnitClass):
     def __init__(self):
         super().__init__()
-        self.classname = "greater"
-        self.stats = Stats(2, 2, 2, 2, 40, 2, 40, 2)
+        self.name = "greater"
+        self.bonus_stats = Stats(2, 2, 2, 2, 20, 2, 20, 2)
 
 class High(UnitClass):
     def __init__(self):
         super().__init__()
-        self.classname = "high"
-        self.stats = Stats(3, 3, 3, 3, 50, 3, 50, 3)
+        self.name = "high"
+        self.bonus_stats = Stats(3, 3, 3, 3, 30, 3, 30, 3)
