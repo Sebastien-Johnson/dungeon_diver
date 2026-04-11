@@ -94,9 +94,9 @@ class Stats():
                         setattr(self, name, self.__dir__(name) + 3)
                     continue
 
-    def lvl_up_to_lvl(self, unit_level):
+    def lvl_up_to_lvl(self, initial_stats, unit_level):
         for l in range(unit_level+1):
-            self.lvl_up_once(l)
+            self.lvl_up_once(initial_stats, l)
 
     def show_item_stats(self):
         attr_names = ["max_health", "phys_armor","mag_armor", "agility", "max_mana", "mag_pow", "max_stamina", "phys_pow"]
