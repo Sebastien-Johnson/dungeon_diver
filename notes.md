@@ -30,15 +30,13 @@ Roadmap
   ~~-lvl generation~~
   ~~-Announce monster turn and add wait before their attack~~
   ~~-skill selection~~
-  -rest area every 10f
-  -use items between combats attacking
-  -use items after clearing a lvl
-  -loot system
-    -seperate weapon hands tracker and equip weapon function
-  -xp update system
+ ~~ -rest area every 10f~~
+  ~~-loot system~~
+    ~~-seperate weapon hands tracker and equip weapon function~~
+  ~~-xp update system~~
 ~~-basic abilities~~
  ~~ -use_ability function~~
-  -ability library
+  ~~-ability library~~
   -add stamina cost to ability selection menu
 -combat system
   ~~-list target health and caster resources after each attack~~
@@ -66,17 +64,10 @@ Notes
 - item generation
   ~~- Change equip item to check if weapon then item (change class structure for weapons?)~~
 ~~- player lvl showing as 0 in lvl up display~~
-- update die function to allow restart before sys exit
-- add immediate leveling function to monster creation
+~~- add immediate leveling function to monster creation~~
 - add xp val lvl multiplier
 - using pickle for save states?
-- Slime heal not functioning properly
- -'score' by XP obtained or dungeon lvl reached
-  -Bonus for no damage instances
- -initiation and termination
- -save states?
- -multiplayer via socket library?
- -garbage cleaner
+
 
 
 Outline

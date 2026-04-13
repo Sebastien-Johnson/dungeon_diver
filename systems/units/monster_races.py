@@ -6,9 +6,12 @@ class MonsterRace(Race):
     def __init__(self):
         super().__init__()
         self.base_stats = Stats()
+        self.xp_val = int()
 
-    def trait(self):
-        pass
+    def scale_xp(self, unit_lvl):
+        xp_base = self.xp_val
+        xp_multiplier = 1.25
+        self.xp_val = xp_base*xp_multiplier*unit_lvl
     
 class Slime(MonsterRace):
     def __init__(self):
@@ -16,10 +19,8 @@ class Slime(MonsterRace):
         self.name = "Slime"
         self.base_stats = Stats(2, 0, 0, 1, 0, 0, 20, 3)
         self.skills = SlimeSkills()
-        self.xp_val = 100
+        self.xp_val = 50
 
-    def trait(self):
-        pass
 
 class Bat(MonsterRace):
     def __init__(self):
@@ -27,10 +28,8 @@ class Bat(MonsterRace):
         self.name = "Bat"
         self.base_stats = Stats(2, 0, 0, 1, 0, 0, 20, 5)
         self.skills = BatSkills()
-        self.xp_val = 100
+        self.xp_val = 50
 
-    def trait(self):
-        pass
 
 class Goblin(MonsterRace):
     def __init__(self):
@@ -38,10 +37,8 @@ class Goblin(MonsterRace):
         self.name = "Goblin"
         self.base_stats = Stats(2, 0, 0, 1, 0, 0, 20, 5)
         self.skills = GoblinSkills()
-        self.xp_val = 100
+        self.xp_val = 50
 
-    def trait(self):
-        pass
 
 class Kobold(MonsterRace):
     def __init__(self):
@@ -51,8 +48,6 @@ class Kobold(MonsterRace):
         self.skills = KoboldSkills()
         self.xp_val = 100
 
-    def trait(self):
-        pass
 
 class DireWolf(MonsterRace):
     def __init__(self):
@@ -62,8 +57,6 @@ class DireWolf(MonsterRace):
         self.skills = DirewolfSkills()
         self.xp_val = 100
 
-    def trait(self):
-        pass
 
 class Troll(MonsterRace):
     def __init__(self):
@@ -73,8 +66,6 @@ class Troll(MonsterRace):
         self.skills = TrollSkills()
         self.xp_val = 100
 
-    def trait(self):
-        pass
 
 class Giant(MonsterRace):
     def __init__(self):
@@ -84,8 +75,6 @@ class Giant(MonsterRace):
         self.skills = GiantSkills()
         self.xp_val = 200
 
-    def trait(self):
-        pass
 
 class Dragon(MonsterRace):
     def __init__(self):
@@ -93,7 +82,4 @@ class Dragon(MonsterRace):
         self.name = "Dragon"
         self.base_stats = Stats(1)
         self.skills = DragonSkills(5, 0, 0, 1, 0, 0, 20, 5)
-        self.xp_val = 200
-
-    def trait(self):
-        pass
+        self.xp_val = 400

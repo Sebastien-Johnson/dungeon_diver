@@ -1,6 +1,6 @@
 import random, time
-from .combat import Combat
 from systems.units.monster_races import *
+from .combat import Combat
 from systems.units.units_base import Monster
 from systems.units.classes import Lesser, Greater, High
 
@@ -16,9 +16,9 @@ class Dungeon():
 
     def generate_dungeon(self):
         self.curr_dng_lvl += 1
-        #allow for potions between levels
         while self.player.base_stats.current_health > 0:
             monster = self.generate_monster(self.curr_dng_lvl)
+            self.type_text("")
             self.type_text(f"You descend to floor {self.curr_dng_lvl} of the dungeon...")
             time.sleep(1)
             self.type_text(f"A {monster.name} approaches!!\n")
@@ -28,12 +28,15 @@ class Dungeon():
         
 
     def generate_monster(self, curr_dng_lvl):
-        if curr_dng_lvl%10 in range(1, 19) or curr_dng_lvl in range(1, 10):
+        if curr_dng_lvl == 101:
+            self.type_text(f"Congratulations and thanks {self.player.name}, on clearing those pests from my doorstep")
+        elif curr_dng_lvl%10 in range(1, 19) or curr_dng_lvl in range(1, 10):
             monster_race = self.spawn_rate()
             grade = self.monster_grade()
             monster = Monster(self.check_monster_race(monster_race), grade)
             monster.add_loot_equipment(self.curr_dng_lvl)
             monster.base_stats.lvl_up_to_lvl(monster.initial_stats, self.player.current_lvl)
+            monster.race.scale_xp(self.player.current_lvl)
             return monster
         elif curr_dng_lvl%10 == 0:
             self.type_text("There appears to be no monsters around...")
@@ -62,7 +65,6 @@ class Dungeon():
             return Greater()
         else:
             return Lesser()
-
 
     def check_monster_race(self, monster_race):
         match monster_race:

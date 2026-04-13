@@ -109,5 +109,3 @@ class HeavyLegs(LegPiece):
         self.med_qual = Stats(4,4,4,-3,0,0,0,0)
         self.high_qual = Stats(6,6,6,-5,0,0,0,0)
         self.stats = self.choose_metal_quality(self.low_qual, self.med_qual, self.high_qual, self.quality)
-        
-

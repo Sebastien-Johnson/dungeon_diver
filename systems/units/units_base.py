@@ -1,8 +1,8 @@
 import time
 import math
 from loot.inventory import UnitInventory
-from ..lvls_xp import Leveling
 from loot.make_loot import LootMaker
+from ..lvls_xp import Leveling
 from ..stats import Stats
 
 class Unit():
@@ -81,10 +81,10 @@ class Player(Unit):
         self.name = name
         self.current_xp = self.leveling.xp_bar.current_xp
         self.xp_to_lvl = int()
-        self.initial_stats = unit_class.stats #static lvl 1 stats
+        self.initial_stats = unit_class.stats 
         self.base_stats = Stats()
         self.base_stats.add_stats(self.initial_stats)
-        self.base_stats.add_stats(self.race.stat_bonuses) #scaling stats with flat racial & equipment bonuses
+        self.base_stats.add_stats(self.race.stat_bonuses) 
         self.skills = unit_class.skills
 
     def take_phys_damage(self, damage): 
