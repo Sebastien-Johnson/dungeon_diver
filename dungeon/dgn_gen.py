@@ -1,4 +1,4 @@
-import random, time
+import random, time, sys
 from systems.units.monster_races import *
 from .combat import Combat
 from systems.units.units_base import Monster
@@ -29,7 +29,11 @@ class Dungeon():
 
     def generate_monster(self, curr_dng_lvl):
         if curr_dng_lvl == 101:
-            self.type_text(f"Congratulations and thanks {self.player.name}, on clearing those pests from my doorstep")
+            self.type_text(f"\x1B[3m(A deep, Keith David sounding voice booms in)\x1B[0m")
+            self.type_text(f"'CONGRATULATIONS, little mouse, on clearing those pests from my doorstep...'")
+            self.type_text(f"'I really hate when my pets try to eat those vermin.'")
+            self.type_text(f"'\x1B[3mYou should yourself out, before they see themselves to you\x1B[0m'")
+            sys.exit()
         elif curr_dng_lvl%10 in range(1, 19) or curr_dng_lvl in range(1, 10):
             monster_race = self.spawn_rate()
             grade = self.monster_grade()
@@ -110,6 +114,7 @@ class Dungeon():
             else:
                 self.type_text("Sorry, didn't hear you (coward).")
                 reply = input().lower()
+                if reply in ["yes", "y"]:
 
     def rest_menu(self):
         while True:

@@ -64,4 +64,13 @@ def test_reequip():
     
     player1.inventory.change_equipment(player1)
 
-test_reequip()
+def type_text(text_string):
+        for t in text_string:
+            print(f"{t}", end="", flush=True)
+            time.sleep(.04)
+        print("")
+
+type_text(f"\x1B[3m(A deep, Keith David sounding voice booms in)\x1B[0m")
+type_text(f"'CONGRATULATIONS, little mouse, on clearing those pests from my doorstep!!'")
+type_text(f"'I've yet to find a few minutes to do it myself and I really hate when my pets try to eat those vermin.'")
+type_text(f"'That being said, you should see yourself out, before they see themselves to \x1B[3myou\x1B[0m...'")
