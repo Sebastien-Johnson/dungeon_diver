@@ -38,8 +38,30 @@ def loot_drop():
         dungeon.start_combat(player, monster)
         
 
-sword = Sword("busted bronze")
-monster = Monster(Goblin())
-player = Player("Seb", Human(), Warrior())
-monster.inventory.equip_item(sword, player)
-monster.inventory.loot_body(player)
+def test_reequip():
+    player1 = Player("seb", Human(), Warrior())
+
+    weapon1 = Sword("busted bronze")
+    helmet1 = HeavyHead("busted bronze")
+    chest1 = HeavyChest("busted bronze")
+    arms1 = HeavyArms("busted bronze")
+    legs1 = HeavyLegs("busted bronze")
+    to_equip = [weapon1, helmet1, chest1, arms1, legs1]
+
+    for item in to_equip:
+        player1.inventory.equip_item(item, player1)
+    
+    weapon2 = Dagger("busted bronze")
+    helmet2 = LightHead("crusty cotton")
+    chest2 = LightChest("crusty cotton")
+    arms2 = LightArms("crusty cotton")
+    legs2 = LightLegs("crusty cotton")
+    to_bag = [weapon2, helmet2, chest2, arms2, legs2]
+
+    for item in to_bag:
+        player1.inventory.add_to_bag(item)
+
+    
+    player1.inventory.change_equipment(player1)
+
+test_reequip()

@@ -9,7 +9,7 @@ class SlimeSkills(PhysSkills, MagSkills):
     def absorb(self, caster, target, cost=5, base_pow=0, accuracy=75):
         self.type_text(f"{caster.name} learches at {target.name} to leach their essence!")
         if self.phys_attack(caster, target, cost, base_pow=0, accuracy=accuracy):
-            self.phys_heal(caster, caster, cost, base_pow, 100)
+            self.phys_drain(caster, caster, cost, base_pow, 100)
         self.monster_status(caster, target)
 
 class BatSkills(PhysSkills, MagSkills):
@@ -25,9 +25,8 @@ class BatSkills(PhysSkills, MagSkills):
 
     def vamp_bite(self, caster, target, cost=5, base_pow=0, accuracy=75):
         self.type_text(f"{caster.name} learches at {target.name} to leach their essence!") 
-        if self.phys_attack(caster, target, cost, base_pow, accuracy):
-            self.phys_attack(caster, target, cost, base_pow, 100)
-            self.phys_heal(caster, caster, cost, base_pow, 100)
+        if self.phys_attack(caster, target, cost, base_pow=0, accuracy=accuracy):
+            self.phys_drain(caster, caster, cost, base_pow, 100)
         self.monster_status(caster, target)
 
 class GoblinSkills(PhysSkills, MagSkills):
@@ -37,7 +36,7 @@ class GoblinSkills(PhysSkills, MagSkills):
         self.skill_list = ["stab", "sling"]
 
     def stab(self, caster, target, cost=5, base_pow=1, accuracy=95):
-        self.type_text(f"{caster.name} stabs at {target.name}!") #{caster.inventory.weapons}
+        self.type_text(f"{caster.name} stabs at {target.name}!") 
         self.phys_attack(caster, target, cost, base_pow, accuracy)
         self.monster_status(caster, target)
 

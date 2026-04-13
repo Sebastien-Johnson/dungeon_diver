@@ -12,12 +12,12 @@ class LootMaker():
                               "glass" : "cloudy"}
         self.med_qualities = {"wood" : "ok oak", 
                               "metal" : "aight iron", 
-                              "fabric" : "linen", 
+                              "fabric" : "lacking linen", 
                               "leather" : "lowkey leather", 
                               "glass" : "crystal clear"}
         self.high_qualities = {"wood" : "fine pine", 
                               "metal" : "sick steel", 
-                              "fabric" : "silk", 
+                              "fabric" : "smooth silk", 
                               "leather" : "sassy suede", 
                               "glass" : "fabulously flourescent"}
         

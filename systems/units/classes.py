@@ -32,13 +32,13 @@ class Cleric(UnitClass):
     def __init__(self):
         super().__init__()
         self.classname = "cleric"
-        self.stats = Stats(5, 2, 2, 2, 0, 0, 30, 3)
+        self.stats = Stats(5, 2, 2, 2, 35, 0, 0, 3)
         self.skills = ClericSkills()
 
 class Lesser(UnitClass):
     def __init__(self):
         super().__init__()
-        self.name = "low"
+        self.name = "lesser"
         self.bonus_stats = Stats(1, 1, 1, 1, 10, 1, 10, 1)
 
 class Greater(UnitClass):

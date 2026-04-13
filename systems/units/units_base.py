@@ -52,15 +52,16 @@ class Unit():
         self.restore_health(1)
         self.type_text(f"HP: {initial_hp} -> {self.base_stats.current_health}")
         restore = 5 + math.floor(curr_dng_lvl/10)
-        if self.base_stats.max_mana > 0:
-            initial_mana = self.base_stats.current_mana
+        if self.initial_stats.max_mana > 0:
+            tired_mana = 0
+            tired_mana += self.base_stats.current_mana
             self.restore_mana(restore)
-            self.type_text(f"Mana: {initial_mana} -> {self.base_stats.current_mana}")
-        if self.base_stats.max_stamina > 0:
-            initial_stamina = 0
-            initial_stamina += self.base_stats.current_stamina
+            self.type_text(f"Mana: {tired_mana} -> {self.base_stats.current_mana}")
+        if self.initial_stats.max_stamina > 0:
+            tired_stamina = 0
+            tired_stamina += self.base_stats.current_stamina
             self.restore_stam(restore)
-            self.type_text(f"Stamina: {initial_stamina} -> {self.base_stats.current_stamina}")
+            self.type_text(f"Stamina: {tired_stamina} -> {self.base_stats.current_stamina}")
 
     def long_rest(self):
         self.restore_mana(self.base_stats.max_mana)

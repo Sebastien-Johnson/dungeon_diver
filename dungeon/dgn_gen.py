@@ -109,6 +109,29 @@ class Dungeon():
                 self.type_text("Sorry, didn't hear you (coward).")
                 reply = input().lower()
 
+    def rest_menu(self):
+        while True:
+            self.type_text("Menu (select number):")
+            self.type_text("1. Current stats\n2. Change equipment\n3. Move on")
+            selection = input()
+            if selection == "1":
+                self.player.base_stats.show_stat_update()
+                i = 0
+                self.type_text("Equipped items:")
+                for item in self.player.inventory.equipped:
+                    self.type_text(f"{i+1}. {item.name} ({item.item_type})")
+                    item.stats.show_item_stats()
+                    i += 1
+            elif selection == "2":
+                self.player.inventory.change_equipment()
+            elif selection == "3":
+                self.cont(self.player)
+                break
+            else:
+                self.type_text("Improper input, try again")
+            
+
+
     def type_text(self, text_string):
         for t in text_string:
             print(f"{t}", end="", flush=True)

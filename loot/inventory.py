@@ -81,7 +81,7 @@ class UnitInventory():
         self.weapons.remove(current_weapon)
         self.add_to_bag(current_weapon)
         unit.base_stats.remove_stats(current_weapon.stats)
-        self.type_text(f"{current_weapon.name} moved to bag.")
+       
 
         
     def check_hands(self, player, new_weapon):
@@ -121,6 +121,7 @@ class UnitInventory():
     def loot_body(self, player):
         for i in self.equipped:
             self.type_text(f"They dropped a {i.name}!!")
+            self.type_text("Item stats:")
             i.stats.show_item_stats()
             self.type_text("Take it? (y/n)")
             take = input()
@@ -129,11 +130,15 @@ class UnitInventory():
                 if take in ["yes", "y"]:
                     self.equipped.remove(i)     
                     self.type_text("Bag or equip? (1/2)")
+                    
                     bag_equip = input()
                     while True:
                         if bag_equip == "1":
                             player.inventory.add_to_bag(i)
-                            break
+                            if (len(self.bag)-1) >= 20:
+                                self.type_text("Bag limit reached!")
+                                self.type_text(f"{player.name} had to leave {i.name} behind...")
+                                break
                         elif bag_equip == "2":
                             player.inventory.equip_item(i, player)
                             break
@@ -148,8 +153,40 @@ class UnitInventory():
                 else:
                     self.type_text("Unclear answer, try again.")
                     take = input()
-                
     
+
+    def change_equipment(self, unit):
+        i = 0
+        self.type_text("Choose an item (number) to equip or toss:")
+        for item in self.bag:
+            self.type_text(f"{i+1}. {item.name}")
+            item.stats.show_item_stats()
+            self.type_text("")
+            i += 1
+        choice = int(input())
+        while True:
+            if choice > 0 and choice < len(self.bag):
+                self.type_text(f"Equip or toss {self.bag[choice-1].name}? (e/t, or 'r' to return)")
+                equip_toss = input()
+                while True:
+                    if equip_toss in ["e", "equip"]:
+                        self.equip_item(self.bag[choice-1], unit)
+                        self.bag.remove(self.bag[choice-1])
+                        return
+                    elif equip_toss in ["t", "toss"]:
+                        self.throw_item(self.bag[choice-1])
+                        return
+                    elif equip_toss in ["r", "return"]:
+                        return
+                    else:
+                        self.type_text("Unclear answer, try again")
+                        equip_toss = input()
+            else:
+                self.type_text("Unclear answer, try again")
+                item = input()
+            break
+
+
     def type_text(self, text_string):
         for t in text_string:
             print(f"{t}", end="", flush=True)

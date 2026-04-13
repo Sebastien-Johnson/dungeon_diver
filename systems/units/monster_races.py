@@ -14,7 +14,7 @@ class Slime(MonsterRace):
     def __init__(self):
         super().__init__()
         self.name = "Slime"
-        self.base_stats = Stats(2, 0, 0, 1, 0, 0, 20, 2)
+        self.base_stats = Stats(2, 0, 0, 1, 0, 0, 20, 3)
         self.skills = SlimeSkills()
         self.xp_val = 100
 

@@ -5,16 +5,6 @@ class Item():
         self.name = name
         self.stats = Stats()
 
-
-class Potion(Item):
-    def __init__(self, name, item_type, health, mana, stamina):
-        super().__init__(name)
-        self.item_type = "Potion"
-        self.health = health
-        self.mana = mana
-        self.stamina = stamina
-        self.item_type = item_type
-
 class Equipment(Item):
     def __init__(self, quality, name):
         super().__init__(name)
@@ -43,9 +33,9 @@ class Equipment(Item):
         match given_quality:
             case "crusty cotton":
                 return low
-            case "linen":
+            case "lacking linen":
                 return medium
-            case "silk":
+            case "smooth silk":
                 return high
 
     def choose_leather_quality(self, low, medium, high, given_quality):

@@ -133,6 +133,6 @@ Outline
 
 Reflection
   - Stricter testing
-  - Cleaner sorting of functions
+  - Cleaner sorting of functions to avoid circular dependencies and enable more capability
   - More time spent building and maintaining an outline
   - Updated issue log

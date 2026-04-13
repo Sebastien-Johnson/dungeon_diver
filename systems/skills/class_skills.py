@@ -7,14 +7,14 @@ class WarriorSkills(PhysSkills):
 
         self.skill_list = {"1":"slash", "2":"vert_chop"}
 
-    def slash(self, caster, target, cost=5, base_pow=1, accuracy=100):
+    def slash(self, caster, target, cost=4, base_pow=1, accuracy=100):
         self.type_text(f"{caster.name} slashes the {target.name} with their weapon!")
         time.sleep(.5)
         self.phys_attack(caster, target, cost, base_pow, accuracy)
         time.sleep(.5)
         self.phys_player_status(caster, target)
 
-    def vert_chop(self, caster, target, cost=8, base_pow=3, accuracy=85):
+    def vert_chop(self, caster, target, cost=6, base_pow=3, accuracy=85):
         self.type_text(f"{caster.name} sends a rending flash at {target.name}!")
         time.sleep(.5)
         self.phys_attack(caster, target, cost, base_pow, accuracy)
@@ -25,15 +25,21 @@ class RangerSkills(PhysSkills):
     def __init__(self):
         super().__init__()
 
-        self.skill_list = {"1" : "arrow_shot"}
+        self.skill_list = {"1" : "arrow_shot", "2" : "triple_shot"}
 
-    def arrow_shot(self, caster, target, cost=2, base_pow=2, accuracy=100):
+    def arrow_shot(self, caster, target, cost=3, base_pow=2, accuracy=100):
         self.type_text(f"{caster.name} fires an arrow at the {target.name}!")
         time.sleep(.5)
         self.phys_attack(caster, target, cost, base_pow, accuracy)
         time.sleep(.5)
         self.phys_player_status(caster, target)
 
+    def triple_shot(self, caster, target, cost=7, base_pow=6, accuracy=80):
+        self.type_text(f"{caster.name} is feeling themself and fires an arrow barrage at the {target.name}!")
+        time.sleep(.5)
+        self.phys_attack(caster, target, cost, base_pow, accuracy)
+        time.sleep(.5)
+        self.phys_player_status(caster, target)
 
 class MageSkills(MagSkills):
     def __init__(self):

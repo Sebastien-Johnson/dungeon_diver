@@ -100,6 +100,16 @@ class PhysSkills(Skills):
                 time.sleep(1)
                 self.type_text(f"{target.name} restored {hp2} health points!")
                 return True   
+    
+    def phys_drain(self, caster, target, cost, base_pow, accuracy):
+        if self.check_stamina(caster, cost):
+            if self.check_accuracy(accuracy):
+                hp1 = caster.base_stats.current_health
+                caster.restore_health(self.calc_phys_power(caster, base_pow)-target.base_stats.phys_armor)
+                hp2 = caster.base_stats.current_health - hp1
+                time.sleep(1)
+                self.type_text(f"{caster.name} drained {hp2} health points from {target.name}!")
+                return True 
 
 class MagSkills(Skills):
     def __init__(self):
