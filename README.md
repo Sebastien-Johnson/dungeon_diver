@@ -3,7 +3,7 @@ CLI dungeon diver, roguelike adventure game
 
 Requirements: Python 3.12.3
 
-Running the program:
+How to run the program:
 
 1. Clone the repository: https://github.com/Sebastien-Johnson/dungeon_diver
 
