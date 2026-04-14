@@ -7,11 +7,6 @@ class MonsterRace(Race):
         super().__init__()
         self.base_stats = Stats()
         self.xp_val = int()
-
-    def scale_xp(self, unit_lvl):
-        xp_base = self.xp_val
-        xp_multiplier = 1.25
-        self.xp_val = xp_base*xp_multiplier*unit_lvl
     
 class Slime(MonsterRace):
     def __init__(self):
@@ -19,7 +14,7 @@ class Slime(MonsterRace):
         self.name = "Slime"
         self.base_stats = Stats(2, 0, 0, 1, 0, 0, 20, 3)
         self.skills = SlimeSkills()
-        self.xp_val = 50
+        self.xp_val = 50 
 
 
 class Bat(MonsterRace):

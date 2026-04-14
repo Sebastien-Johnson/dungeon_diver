@@ -112,7 +112,7 @@ class Monster(Unit):
 
     def take_phys_damage(self, damage):
         effective_dmg = max((damage - self.base_stats.phys_armor), 0)
-        self.base_stats.current_health -= effective_dmg
+        self.base_stats.current_health -= effective_dmg 
         
 
     def take_mag_damage(self, damage):
@@ -123,3 +123,8 @@ class Monster(Unit):
         dungeon_spoils = LootMaker()
         loot = dungeon_spoils.generate_loot(curr_dng_lvl)
         self.inventory.equip_item(loot, self) 
+
+    def scale_xp(self, unit_lvl):
+        xp_base = self.xp_val
+        xp_multiplier = 1.25
+        self.xp_val = xp_base*xp_multiplier*unit_lvl

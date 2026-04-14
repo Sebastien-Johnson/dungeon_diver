@@ -40,7 +40,7 @@ class Dungeon():
             monster = Monster(self.check_monster_race(monster_race), grade)
             monster.add_loot_equipment(self.curr_dng_lvl)
             monster.base_stats.lvl_up_to_lvl(monster.initial_stats, self.player.current_lvl)
-            monster.race.scale_xp(self.player.current_lvl)
+            monster.scale_xp(self.player.current_lvl)
             return monster
         elif curr_dng_lvl%10 == 0:
             self.type_text("There appears to be no monsters around...")
