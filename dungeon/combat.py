@@ -31,18 +31,18 @@ class Combat():
         self.type_text(f"Skills available:")
         for key, value in player.skills.skill_list.items():
             self.type_text(f"{key}. {value} ")   
-        player_choice = input().lower()
+        reply = input().lower()
         self.type_text("")
         propper_choice = False
 
         while propper_choice == False:
-            if f"{player_choice}" in player.skills.skill_list:
+            if f"{reply}" in player.skills.skill_list:
                 propper_choice = True
                 time.sleep(1)
-                getattr(player.skills, player.skills.skill_list[f"{player_choice}"])(player, monster)
+                getattr(player.skills, player.skills.skill_list[f"{reply}"])(player, monster)
             else:
-                self.type_text(f"Sorry, '{player_choice}' is not a skill you know. Try again.")
-                player_choice = input().lower()
+                self.type_text(f"Sorry, '{reply}' is not a skill you know. Try again.")
+                reply = input().lower()
        
 
     def choose_monster_skill(self, monster, player):

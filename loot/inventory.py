@@ -50,7 +50,7 @@ class UnitInventory():
                         case "legs":
                             self.legs = new_armor
                         case _:
-                            self.type_text("Doesn't fit anywhere...")
+                            return ValueError("Doesn't fit anywhere...")
         else:
              player.base_stats.add_stats(new_armor.stats) 
              self.armors.append(new_armor)
@@ -69,7 +69,7 @@ class UnitInventory():
                     self.legs = new_armor
                     return
                 case _:
-                    self.type_text("Doesn't fit anywhere..")
+                    return ValueError("Doesn't fit anywhere..")
 
     def equip_weapon(self, unit, new_weapon):
         self.weapons.append(new_weapon)

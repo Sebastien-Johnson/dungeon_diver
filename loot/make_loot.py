@@ -74,6 +74,8 @@ class LootMaker():
                 return Bow(quality)
             case "orb":
                 return Orb(quality)
+            case _:
+                return ValueError("Can't forge weapon")
 
         
     def generate_armor(self, curr_dng_lvl): 
@@ -118,6 +120,8 @@ class LootMaker():
                         return LightArms(quality)
                     case "legs":
                         return LightLegs(quality)
+            case _:
+                return ValueError("Can't forge armor")
                 
 
     def drop_rate(self, curr_dng_lvl):

@@ -37,19 +37,17 @@ class Game():
 
     def check_race(self):
         valid_races = ["human", "dwarf", "elf", "goliath"]
-        known_race = False
         self.type_text("What race are you?")
         self.type_text("[Human, Dwarf, Elf, Goliath]")
         player_race = input().lower()
         self.type_text("")
 
-        while known_race == False:
-            if player_race.lower() in valid_races:
-                known_race = True
-                return player_race.lower()
+        while True:
+            if player_race in valid_races:
+                return player_race
             else:
                 self.type_text(f"Sorry, '{player_race}' is not a known race. Try again.")
-                player_race = input()
+                player_race = input().lower()
 
     def race_to_obj(self, race):
         match race:
@@ -61,23 +59,23 @@ class Game():
                 return Dwarf()
             case "goliath":
                 return Goliath()
+            case _:
+                return ValueError("no race")
     
     def check_class(self):
         valid_classes = ["warrior", "mage", "cleric", "ranger"]
-        propper_class = False
         self.type_text("What class are you?")
         self.type_text("[Warrior, Mage, Cleric, Ranger]")
         player_class = input().lower()
         self.type_text("")
-        
 
-        while propper_class == False:
-            if player_class.lower() in valid_classes:
-                propper_class = True
+        while True:
+            if player_class in valid_classes:
                 return player_class
             else:
-                self.type_text(f"Sorry, '{player_class}' is not a propper class. Try again.")
+                self.type_text(f"Sorry, '{player_class}' is not a known race. Try again.")
                 player_class = input().lower()
+        
     
     def player_class_to_obj(self, player_class):
         match player_class:
@@ -89,28 +87,16 @@ class Game():
                 return Mage()
             case "cleric":
                 return Cleric()
-            
-    def type_text(self, text_string):
-        for t in text_string:
-            print(f"{t}", end="", flush=True)
-            time.sleep(.04)
-        print("")
+            case _:
+                return ValueError("unemployed")
 
     def start_dungeon(self, player):
         new_dungeon = Dungeon(player)
         new_dungeon.generate_dungeon()
         self.check_if_replay()
-    
-    def check_if_replay(self):
-        self.type_text("Feed the dungeon again? (y/n)")
-        answer = input()
-        while True:
-            if answer in ["yes", "y"]:
-                break
-            elif answer in ["no", "n"]:
-                sys.exit(self.type_text("This is why no one will remember you name.."))
-            else:
-                self.type_text("Your corpse is too quiet, try again.")
-                answer = input()
-        new_game = Game()
-        new_game.game_start()
+
+    def type_text(self, text_string):
+        for t in text_string:
+            print(f"{t}", end="", flush=True)
+            time.sleep(.04)
+        print("")
