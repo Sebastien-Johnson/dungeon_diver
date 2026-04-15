@@ -134,11 +134,13 @@ class UnitInventory():
                     bag_equip = input()
                     while True:
                         if bag_equip == "1":
-                            player.inventory.add_to_bag(i)
                             if (len(self.bag)-1) >= 20:
                                 self.type_text("Bag limit reached!")
                                 self.type_text(f"{player.name} had to leave {i.name} behind...")
                                 break
+                            self.bag.remove(i)
+                            player.inventory.add_to_bag(i)
+                            break
                         elif bag_equip == "2":
                             player.inventory.equip_item(i, player)
                             break
