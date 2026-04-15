@@ -104,24 +104,41 @@ class Dungeon():
     
 
     def cont(self, player):
-        self.type_text(f"Venture on? (y/n)")
-        reply = input().lower()
         while True:
-            if reply in ["yes", "y"]:
-                self.type_text(f"{player.name} catches their breath between floors.")
-                player.short_rest(self.curr_dng_lvl)
-                break
-            elif reply in ["n", "no"]:
-                self.type_text("Sorry, didn't hear you (coward).")
-                reply = input().lower()
-                if reply in ["yes", "y"]:
+            self.type_text("Menu:")
+            self.type_text("1. Continue\n2. See stats")
+            reply = input().lower()
+            while True:
+                if reply == "1":
+                    self.type_text("Venture on? (y/n)")
+                    reply2 = input().lower()
+                    if reply2 in ["yes", "y"]:
+                        self.type_text(f"{player.name} catches their breath between floors.")
+                        player.short_rest(self.curr_dng_lvl)
+                        break
+                    elif reply2 in ["n", "no"]:
+                        self.type_text("Sorry, didn't hear you (coward).")
+                        reply2 = input().lower()
+                        if reply2 in ["yes", "y"]:
+                            continue
+                        elif reply2 in ["n", "no"]:
+                            self.type_text("This is why no one will remember your name")
+                            sys.exit()
+                    else:
+                        self.type_text("Unclear input, try again.")
+                        reply2 = input().lower()
+                        continue
+                    break
+                elif reply == "2":
+                    player.base_stats.show_item_stats()
+                    time.sleep(.04)
+                    break
+                else:
+                    self.type_text("Unclear input, try again.")
+                    reply = input().lower()
                     continue
-                elif reply in ["n", "no"]:
-                    self.type_text("This is why no one will remember your name")
-                    sys.exit()
-            else:
-                self.type_text("Unclear input, try again.")
-                reply = input().lower()
+            break
+            
             
 
 
